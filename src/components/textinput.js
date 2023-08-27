@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-
+  
 const TextInputComponent = ({ placeholderText }) => {
   const [valorInput, setValorInput] = useState('');
 
   const lidarComMudancaDeInput = (texto) => {
     setValorInput(texto);
-     };
+  };
 
   return (
     <View style={styles.container}>
