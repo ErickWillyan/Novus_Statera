@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ScreenFavoritos from "../pages/favoritos";
-import ScreenHistorico from "../pages/historico_coleta";
-import ScreenChat from "../pages/chat";
-import ScreenHome from "../pages/Home";
-import ScreenPerfil from "../pages/perfil";
+import ScreenFavoritos from "../screens/favoritos";
+import ScreenHistorico from "../screens/historico_coleta";
+import ScreenChat from "../screens/chat";
+import ScreenHome from "../screens/home";
+import ScreenPerfil from "../screens/perfil";
 
 const Tab = createBottomTabNavigator();
 

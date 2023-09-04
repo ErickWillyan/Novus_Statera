@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import TextInputComponent from "/src/components/TextInput";
+import TextInputComponent from "../../components/textinput";
 import CustomButton from "../../components/Button";
 import ReturnButton from "../../components/ReturnButton";
 
@@ -17,8 +17,9 @@ export default function ScreenHome() {
       <TextInputComponent placeholderText="Email" />
       <View style={{ alignItems: "center" }}>
         <CustomButton title="Entrar" onPress={handleButtonPress} />
-        <Text style={styles.messageText}>{message}</Text> {/* Exibe a mensagem na tela */}
-        <ReturnButton/>
+        <Text style={styles.messageText}>{message}</Text>{" "}
+        {/* Exibe a mensagem na tela */}
+        <ReturnButton />
       </View>
     </View>
   );
