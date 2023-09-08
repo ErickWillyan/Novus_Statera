@@ -16,7 +16,7 @@ const TextInputComponent = ({ placeholderText }) => {
         onChangeText={lidarComMudancaDeInput}
         placeholder={placeholderText}
         placeholderTextColor="rgba(0, 129, 0, 0.34)"
-        maxLength={50}
+      
       />
     </View>
   );
@@ -33,8 +33,7 @@ const styles = StyleSheet.create({
     borderColor: "#FF8108",
     borderRadius: 10,
     backgroundColor: "#F2F2F2",
-    padding: 10,
-    width: 338,
+    width: 300,
     height: 52,
     flexShrink: 0,
     marginBottom: 10,
