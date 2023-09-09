@@ -15,57 +15,85 @@ export default function Routes() {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarActiveTintColor: "#0FA958",
+        tabBarInactiveTintColor: "#0FA958",
+        tabBarShowLabel: false,
         tabBarStyle: {
-          height: "60",
           backgroundColor: "#fff",
-          bottom: "3",
-          width: "90%",
-          alignSelf: "center",
-          shadowColor: "#363636",
-          justifyContent: "center",
-          borderRadius: 50,
+          borderTopWidth: 0,
+          height: 50,
         },
-        tabBarActiveTintColor: "#f95e56",
-        tabBarInactiveTintColor: "#a9a9a9",
-        headerShown: false,
       }}
     >
       <Tab.Screen
         name="Favoritos"
         component={ScreenFavoritos}
         options={{
-          tabBarIcon: ({ color, focused }) => {
-            return (
-              <View
-                style={{
-                  height: "100%",
-                  marginTop: focused ? "10%" : "2%",
-                  justifyContent: "center",
-                }}
-              >
-                <Ionicons
-                  name={focused ? "home" : "home-outline"}
-                  color={color}
-                  size={focused ? 30 : 26}
-                />
-              </View>
-            );
+          tabBarIcon: ({ color, size, focused }) => {
+            size = 30;
+            if (focused) {
+              return <Ionicons name="heart" size={size} color={color} />;
+            }
+            return <Ionicons name="heart-outline" size={size} color={color} />;
           },
-          tabBarLabel: ({ focused }) => {
+        }}
+      />
+      <Tab.Screen
+        name="Historico_Coleta"
+        component={ScreenHistorico}
+        options={{
+          tabBarIcon: ({ color, size, focused }) => {
+            size = 30;
+            if (focused) {
+              return <Ionicons name="reader" size={size} color={color} />;
+            }
+            return <Ionicons name="reader-outline" size={size} color={color} />;
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={ScreenHome}
+        options={{
+          tabBarIcon: ({ color, size, focused }) => {
+            size = 30;
+            if (focused) {
+              return <Ionicons name="home" size={(size = 35)} color={color} />;
+            }
             return (
-              <Text
-                style={{ color: "#A9A9A9", fontSize: 12, marginBottom: "4%" }}
-              >
-                {focused ? "" : "Início"}
-              </Text>
+              <Ionicons name="home-outline" size={(size = 35)} color={color} />
             );
           },
         }}
       />
-      <Tab.Screen name="Historico_Coleta" component={ScreenHistorico} />
-      <Tab.Screen name="Home" component={ScreenHome} />
-      <Tab.Screen name="Chat" component={ScreenChat} />
-      <Tab.Screen name="Perfil" component={ScreenPerfil} />
+      <Tab.Screen
+        name="Chat"
+        component={ScreenChat}
+        options={{
+          tabBarIcon: ({ color, size, focused }) => {
+            size = 30;
+            if (focused) {
+              return <Ionicons name="chatbubbles" size={size} color={color} />;
+            }
+            return (
+              <Ionicons name="chatbubbles-outline" size={size} color={color} />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Perfil"
+        component={ScreenPerfil}
+        options={{
+          tabBarIcon: ({ color, size, focused }) => {
+            size = 30;
+            if (focused) {
+              return <Ionicons name="person" size={size} color={color} />;
+            }
+            return <Ionicons name="person-outline" size={size} color={color} />;
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 }

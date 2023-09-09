@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#008100", // Cor do texto
-    fontFamily: "Inter", // Nome da fonte
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",

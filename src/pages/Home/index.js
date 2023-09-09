@@ -13,7 +13,7 @@ export default function ScreenHome() {
 
   return (
     <View>
-      <Text>Tela Home</Text>
+      <Text> Tela Home</Text>
       <TextInputComponent placeholderText="Email" />
       <View style={{ alignItems: "center" }}>
         <CustomButton title="Entrar" onPress={handleButtonPress} />
