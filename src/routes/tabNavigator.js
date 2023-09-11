@@ -55,6 +55,7 @@ export default function Routes() {
         name="Home"
         component={ScreenHome}
         options={{
+          title:'',
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
             if (focused) {

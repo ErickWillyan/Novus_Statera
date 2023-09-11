@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import LinkText from "../../components/LinkText";
 
 export default function ScreenHome() {
+  
+
   return (
     <View style={styles.container}>
       <ImageBackground
