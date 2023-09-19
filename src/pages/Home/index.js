@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
+
 export default function ScreenHome() {
   return (
     <View style={styles.container}>
