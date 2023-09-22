@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import CardColetor from "../../components/Cardcoletor";
-import ComboBox from '../../components/ComboBox';
+import ComboBox from "../../components/ComboBox";
 
 export default function ScreenHistorico() {
-  const options = ['Opção 1', 'Opção 2', 'Opção 3'];
+  const options = [
+    "Mais Recentes",
+    "Mais Antigos",
+    "+ Óleo",
+    "- Óleo",
+    "Melhor Avaliação",
+    "Pior Avaliação",
+  ];
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const handleSelect = (option) => {
@@ -12,28 +19,31 @@ export default function ScreenHistorico() {
   };
 
   return (
-
-    
-    <View style={styles.container}>
-      <View>
-      <CardColetor
-        perfilImageUrl="https://exemplo.com/seu-perfil.jpg"
-        nome="Joo da Silva"
-        endereco="Osasco-SP"
-      />
-      </View>
     <View>
-      <ComboBox options={options} selectedOption={selectedOption} onSelect={handleSelect} />
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.text}>Ordenar por:</Text>
+        <ComboBox
+          options={options}
+          selectedOption={selectedOption}
+          onSelect={handleSelect}
+          style={styles.comboBox}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 18, // Defina o tamanho do texto
+    marginRight: 10,
+  },
+  comboBox: {
+    width: 200, // Defina a largura do ComboBox
+    height: 40, // Defina a altura do ComboBox
   },
 });
