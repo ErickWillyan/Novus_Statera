@@ -1,16 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons"; // Importe os ícones adequados do pacote de ícones que você estiver usando
+import { View, Text, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const ComboBox = ({ options, selectedOption, onSelect }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [comboBoxWidth, setComboBoxWidth] = useState(200); // Largura inicial do ComboBox
+  const [comboBoxWidth, setComboBoxWidth] = useState(200);
   const comboBoxRef = useRef(null);
 
   useEffect(() => {
@@ -37,7 +31,7 @@ const ComboBox = ({ options, selectedOption, onSelect }) => {
   const getTextWidth = (text) => {
     // Você pode usar uma biblioteca como 'react-native-text-size' para medir o texto em React Native
     // Aqui, vou definir uma largura padrão apenas para fins de exemplo
-    return 100;
+    return 200; // Aumente a largura para acomodar texto mais longo
   };
 
   return (
@@ -47,7 +41,9 @@ const ComboBox = ({ options, selectedOption, onSelect }) => {
         style={[styles.comboBox, { width: comboBoxWidth }]}
         ref={comboBoxRef}
       >
-        <Text style={styles.text}>{selectedOption}</Text>
+        <Text numberOfLines={1} style={styles.optionText}>
+          {selectedOption}
+        </Text>
         {isDropdownVisible ? (
           <AntDesign name="up" size={16} color="black" style={styles.icon} />
         ) : (
@@ -102,12 +98,10 @@ const styles = StyleSheet.create({
   optionText: {
     maxWidth: "100%",
     fontSize: 16,
+    flexWrap: "nowrap", // Impede que o texto seja quebrado em várias linhas
   },
   icon: {
-    marginLeft: 10, // Espaçamento à direita do texto
-  },
-  text: {
-    fontSize: 18,
+    marginLeft: 10,
   },
 });
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import CardColetor from "../../components/Cardcoletor";
+import { View, Text, StyleSheet, FlatList} from "react-native";
+import HistColetor from "../../components/HistColetor";
 import ComboBox from "../../components/ComboBox";
 
 export default function ScreenHistorico() {
@@ -12,6 +12,7 @@ export default function ScreenHistorico() {
     "Melhor Avaliação",
     "Pior Avaliação",
   ];
+
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const handleSelect = (option) => {
@@ -37,13 +38,16 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    marginLeft: 100,
+    top: 100,
+    position: "absolute"
   },
   text: {
-    fontSize: 18, // Defina o tamanho do texto
+    fontSize: 18,
     marginRight: 10,
   },
   comboBox: {
-    width: 200, // Defina a largura do ComboBox
-    height: 40, // Defina a altura do ComboBox
+    width: 200,
+    height: 40,
   },
 });
