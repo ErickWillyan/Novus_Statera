@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   circle: {
-    backgroundColor: '#008100', // Cor de fundo do círculo
+    backgroundColor: '#008100',
     width: 120, // Largura do círculo
     height: 120, // Altura do círculo
     borderRadius: 60, // Borda arredondada para criar um círculo
