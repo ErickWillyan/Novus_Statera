@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList} from "react-native";
-import HistColetor from "../../components/HistColetor";
 import ComboBox from "../../components/ComboBox";
 
 export default function ScreenHistorico() {
