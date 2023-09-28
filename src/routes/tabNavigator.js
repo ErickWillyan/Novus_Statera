@@ -7,7 +7,6 @@ import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
-import ScreenLogin from "../pages/login";
 import { View } from "react-native-web";
 
 const Tab = createBottomTabNavigator();
@@ -29,7 +28,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenLogin}
+        component={ScreenFavoritos}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

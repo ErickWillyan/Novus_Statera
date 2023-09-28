@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const PasInput = ({ placeholderText }) => {
+const CustomTextInput = ({ placeholderText }) => {
   const [valorInput, setValorInput] = useState("");
 
   const lidarComMudancaDeInput = (texto) => {
@@ -10,15 +10,16 @@ const PasInput = ({ placeholderText }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={valorInput}
-        onChangeText={lidarComMudancaDeInput}
-        placeholder={placeholderText}
-        placeholderTextColor="#008100"
-        textAlign="center"
-      
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          value={valorInput}
+          onChangeText={lidarComMudancaDeInput}
+          placeholder={placeholderText}
+          placeholderTextColor="#008100"
+          underlineColorAndroid="transparent"
+        />
+      </View>
     </View>
   );
 };
@@ -29,21 +30,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
+  inputContainer: {
     borderWidth: 2,
     borderColor: "#FF8108",
     borderRadius: 10,
     backgroundColor: "#F2F2F2",
     width: 300,
     height: 52,
-    flexShrink: 0,
+    paddingHorizontal: 10,
+  },
+  input: {
+    flex: 1,
     color: "black",
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",
     lineHeight: 24,
-
   },
 });
 
-export default PasInput;
+export default CustomTextInput;
