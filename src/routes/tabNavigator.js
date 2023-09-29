@@ -1,13 +1,16 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-
+import ScreenCadastro from "../pages/Cadastro/CadPrim";
 import ScreenFavoritos from "../pages/favoritos";
 import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
 import { View } from "react-native-web";
+import ScreenCadastroPrim from "../pages/Cadastro/CadPrim";
+import ScreenLogin from "../pages/login";
+import ScreenCadastroSec from "../pages/Cadastro/CadSec";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +31,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenFavoritos}
+        component={ScreenCadastroSec}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -37,6 +40,7 @@ export default function Routes() {
             }
             return <Ionicons name="heart-outline" size={size} color={color} />;
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen
