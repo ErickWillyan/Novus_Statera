@@ -22,7 +22,7 @@ export default function ScreenCadastroSec() {
           <View style={{ height: 58 }} />
           <CustomButton title={"Próximo"}/>
     </View>
-   
+  
     </View>
   );
 }
