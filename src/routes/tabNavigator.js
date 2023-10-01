@@ -11,6 +11,7 @@ import { View } from "react-native-web";
 import ScreenCadastroPrim from "../pages/Cadastro/CadPrim";
 import ScreenLogin from "../pages/login";
 import ScreenCadastroSec from "../pages/Cadastro/CadSec";
+import ScreenCadastroTerc from "../pages/Cadastro/CadTerc";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenCadastroSec}
+        component={ScreenFavoritos}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -54,13 +55,13 @@ export default function Routes() {
             }
             return <Ionicons name="reader-outline" size={size} color={color} />;
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen
         name="Home"
         component={ScreenHome}
         options={{
-          title:'',
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
             if (focused) {
@@ -70,6 +71,7 @@ export default function Routes() {
               <Ionicons name="home-outline" size={(size = 35)} color={color} />
             );
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen
