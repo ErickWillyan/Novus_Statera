@@ -19,6 +19,7 @@ export default function Routes() {
         tabBarActiveTintColor: "#0FA958",
         tabBarInactiveTintColor: "#0FA958",
         tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "#fff",
           borderTopWidth: 0,
@@ -56,7 +57,7 @@ export default function Routes() {
         name="Home"
         component={ScreenHome}
         options={{
-          title:'',
+          title: "",
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
             if (focused) {
