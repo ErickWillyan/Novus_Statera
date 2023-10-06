@@ -14,7 +14,7 @@ function LinkText({ placeholder, targetScreen }) {
     <View>
       <Text>
         <TouchableOpacity onPress={handleNavigation}>
-          <Text style={[styles.link, { textDecorationLine: "underline" }]}>
+          <Text style={styles.link}>
             {placeholder}
           </Text>
         </TouchableOpacity>
@@ -26,6 +26,7 @@ function LinkText({ placeholder, targetScreen }) {
 const styles = StyleSheet.create({
   link: {
     color: "#008100",
+    textDecorationLine: "none", // Remova o sublinhado
   },
 });
 

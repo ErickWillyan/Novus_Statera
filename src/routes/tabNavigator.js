@@ -1,19 +1,24 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-
+import ScreenCadastro from "../pages/Cadastro/CadPrim";
 import ScreenFavoritos from "../pages/favoritos";
 import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
 import { View } from "react-native-web";
+import ScreenCadastroPrim from "../pages/Cadastro/CadPrim";
+import ScreenLogin from "../pages/login";
+import ScreenCadastroSec from "../pages/Cadastro/CadSec";
+import ScreenCadastroTerc from "../pages/Cadastro/CadTerc";
 
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: "#0FA958",
         tabBarInactiveTintColor: "#0FA958",
@@ -36,6 +41,7 @@ export default function Routes() {
             }
             return <Ionicons name="heart-outline" size={size} color={color} />;
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen
@@ -49,13 +55,13 @@ export default function Routes() {
             }
             return <Ionicons name="reader-outline" size={size} color={color} />;
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen
         name="Home"
         component={ScreenHome}
         options={{
-          title:'',
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
             if (focused) {
@@ -65,6 +71,7 @@ export default function Routes() {
               <Ionicons name="home-outline" size={(size = 35)} color={color} />
             );
           },
+          headerShown:false,
         }}
       />
       <Tab.Screen

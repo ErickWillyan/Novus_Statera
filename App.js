@@ -3,4 +3,5 @@ import firebase from "./src/firebase/firebaseConnection";
 
 export default function App() {
   return <Routes />;
+
 }

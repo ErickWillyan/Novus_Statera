@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const TextInputComponent = ({ placeholderText }) => {
+const CustomTextInput = ({ placeholderText }) => {
   const [valorInput, setValorInput] = useState("");
 
   const lidarComMudancaDeInput = (texto) => {
@@ -10,14 +10,16 @@ const TextInputComponent = ({ placeholderText }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={valorInput}
-        onChangeText={lidarComMudancaDeInput}
-        placeholder={placeholderText}
-        placeholderTextColor="rgba(0, 129, 0, 0.34)"
-      
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          value={valorInput}
+          onChangeText={lidarComMudancaDeInput}
+          placeholder={placeholderText}
+          placeholderTextColor="#008100"
+          underlineColorAndroid="transparent"
+        />
+      </View>
     </View>
   );
 };
@@ -28,15 +30,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
+  inputContainer: {
     borderWidth: 2,
     borderColor: "#FF8108",
     borderRadius: 10,
     backgroundColor: "#F2F2F2",
     width: 300,
     height: 52,
-    flexShrink: 0,
-    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  input: {
+    flex: 1,
     color: "black",
     fontSize: 20,
     fontStyle: "normal",
@@ -45,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TextInputComponent;
+export default CustomTextInput;
