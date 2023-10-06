@@ -44,9 +44,14 @@ export default function Routes() {
           headerShown:false,
         }}
       />
+
+<Tab.Screen
+  name="CadastroSec"
+  component={ScreenCadastroSec} // Certifique-se de importar a tela Cadastro Secundário
+/>
       <Tab.Screen
         name="Historico_Coleta"
-        component={ScreenHistorico}
+        component={ScreenCadastroPrim}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

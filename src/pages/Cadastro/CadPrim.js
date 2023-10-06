@@ -1,11 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import ReturnButton from "../../components/ReturnButton";
 import LinkText from "../../components/LinkText";
 import CustomTextInput from "../../components/TextInput";
 import CustomButton from "../../components/CustomButton";
+import firebase from "../../firebase/firebaseConnection";
+import ScreenLogin from "../login";
+import ScreenCadastroSec from "./CadSec";
+
+
 
 export default function ScreenCadastroPrim() {
+  const [user, setUser] = useState(123);
+  const [nome, setNome] = useState("");
+  const [sobrenome, setSobrenome] = useState("");
+  const [rg, setRg] = useState("");
+  const [datanasc, setDatanasc] = useState("");
+  const navigation = useNavigation();
+  const irParaCadSec = () => {
+    navigation.navigate('CadastroSec');
+  }
+ 
+  if(!user){
+    return <ScreenLogin/>
+  }
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
@@ -15,16 +34,39 @@ export default function ScreenCadastroPrim() {
       <Image style={styles.perfil} source={require("../../assets/img/Perfil.png")} />
       <LinkText placeholder={"Adicionar Foto"}/>
       </View>
-    <View style={styles.inputs}><CustomTextInput placeholderText={'Nome'} />
-          <CustomTextInput placeholderText={'Sobrenome'} />
-          <CustomTextInput placeholderText={'Registro Geral'} />
-          <CustomTextInput placeholderText={'Data de nascimento'} />
+    <View style={styles.inputs}>
+          <CustomTextInput 
+          placeholderText={'Nome'} 
+          value={nome}
+          onChangeText={(text) => setNome(text) }
+          />
+
+          <CustomTextInput 
+          placeholderText={'Sobrenome'} 
+          value={sobrenome}
+          onChangeText={(text) => setSobrenome(text) }
+          />
+
+          <CustomTextInput 
+          placeholderText={'Registro Geral'} 
+          value={rg}
+          onChangeText={(text) => setRg(text) }
+          />
+
+          <CustomTextInput 
+          placeholderText={'Data de nascimento'} 
+          value={datanasc}
+          onChangeText={(text) => setDatanasc(text) }
+          />
           <View style={{ height: 58 }} />
-          <CustomButton title={"Próximo"}/>
+          <CustomButton 
+          title={"Próximo"}
+          onPress={irParaCadSec}
+          />
     </View>
    
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
