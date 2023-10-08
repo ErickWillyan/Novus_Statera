@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import SplashScreen from "../components/SplashScreen";
 import TabNavigator from "./tabNavigator";
+import CadSec from "../pages/Cadastro/CadSec";
+import CadTecr from "../pages/Cadastro/CadTerc";
 
 
 const Stack = createStackNavigator();
@@ -27,6 +29,8 @@ export default function MainRoute() {
         ) : (
           <Stack.Screen name="TabBar" component={TabNavigator} />
         )}
+        <Stack.Screen name="CadSec" component={CadSec}/>
+        <Stack.Screen name="CadTerc" component={CadTecr}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

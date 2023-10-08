@@ -6,7 +6,7 @@ import LinkText from "../../components/LinkText";
 import CustomTextInput from "../../components/TextInput";
 import CustomButton from "../../components/CustomButton";
 
-export default function ScreenCadastroSec() {
+function ScreenCadastroSec() {
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
@@ -58,3 +58,16 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
 });
+
+ScreenCadastroSec.navigationOptions = {
+  tabBarIcon: ({ color, size, focused }) => {
+    size = 30;
+    if (focused) {
+      return <Ionicons name="reader" size={size} color={color} />;
+    }
+    return <Ionicons name="reader-outline" size={size} color={color} />;
+  },
+  headerShown: false,
+};
+
+export default ScreenCadastroSec;

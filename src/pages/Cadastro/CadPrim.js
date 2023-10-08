@@ -7,7 +7,6 @@ import CustomTextInput from "../../components/TextInput";
 import CustomButton from "../../components/CustomButton";
 import firebase from "../../firebase/firebaseConnection";
 import ScreenLogin from "../login";
-import ScreenCadastroSec from "./CadSec";
 
 
 
@@ -18,9 +17,6 @@ export default function ScreenCadastroPrim() {
   const [rg, setRg] = useState("");
   const [datanasc, setDatanasc] = useState("");
   const navigation = useNavigation();
-  const irParaCadSec = () => {
-    navigation.navigate('CadastroSec');
-  }
  
   if(!user){
     return <ScreenLogin/>
@@ -29,7 +25,7 @@ export default function ScreenCadastroPrim() {
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
     <ReturnButton/>
-    </View>
+    </View> 
     <View style={styles.imagem}>
       <Image style={styles.perfil} source={require("../../assets/img/Perfil.png")} />
       <LinkText placeholder={"Adicionar Foto"}/>
@@ -61,7 +57,7 @@ export default function ScreenCadastroPrim() {
           <View style={{ height: 58 }} />
           <CustomButton 
           title={"Próximo"}
-          onPress={irParaCadSec}
+          onPress={() => navigation.navigate('CadSec')}
           />
     </View>
    
