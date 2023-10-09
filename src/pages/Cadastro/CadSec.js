@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
   },
 });
 
+
+//não tá funcionando
 ScreenCadastroSec.navigationOptions = {
   tabBarIcon: ({ color, size, focused }) => {
     size = 30;
@@ -69,5 +71,6 @@ ScreenCadastroSec.navigationOptions = {
   },
   headerShown: false,
 };
+//não tá funcionando
 
 export default ScreenCadastroSec;
