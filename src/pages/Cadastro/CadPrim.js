@@ -16,7 +16,6 @@ export default function ScreenCadastroPrim() {
   const [sobrenome, setSobrenome] = useState("");
   const [rg, setRg] = useState("");
   const [datanasc, setDatanasc] = useState("");
-  const navigation = useNavigation();
  
   if(!user){
     return <ScreenLogin/>
@@ -57,7 +56,6 @@ export default function ScreenCadastroPrim() {
           <View style={{ height: 58 }} />
           <CustomButton 
           title={"Próximo"}
-          onPress={() => navigation.navigate('CadSec')}
           />
     </View>
    

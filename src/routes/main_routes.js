@@ -29,8 +29,6 @@ export default function MainRoute() {
         ) : (
           <Stack.Screen name="TabBar" component={TabNavigator} />
         )}
-        <Stack.Screen name="CadSec" component={CadSec}/>
-        <Stack.Screen name="CadTerc" component={CadTecr}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
