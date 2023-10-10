@@ -1,6 +1,9 @@
 import React from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
-import TextInputComponent from "../../components/textinput";
+import TextInputComponent from "../../components/textinput
+import { View, Image, StyleSheet, Text } from 'react-native';
+
+
 import LinkText from "../../components/LinkText";
 import { Link } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
@@ -36,6 +39,7 @@ export default function ScreenLogin() {
       </View>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
