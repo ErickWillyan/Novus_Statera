@@ -23,6 +23,7 @@ export default function Routes() {
         tabBarActiveTintColor: "#0FA958",
         tabBarInactiveTintColor: "#0FA958",
         tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "#fff",
           borderTopWidth: 0,
