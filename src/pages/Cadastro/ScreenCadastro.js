@@ -20,22 +20,49 @@ export default function ScreenCadastro() {
     }
   };
 
+  const handleBack = () => {
+    if (step === 3) {
+      setStep(2)
+    } else if (step === 2){
+      setStep(1)
+    }
+  }
+
+
+
   if (step === 1) {
     return (
       <View style={{ flex: 1 }}>
         <ScreenCadastroPrim onNext={handleNext} />
+        <CustomButton 
+          title={"Próximo"}
+          onPress={handleNext}
+          />
+        <ReturnButton 
+        onPress={handleBack}
+        />
       </View>
     );
   } else if (step === 2) {
     return (
       <View style={{ flex: 1 }}>
         <ScreenCadastroSec onNext={handleNext} />
+        <CustomButton 
+          title={"Próximo"}
+          onPress={handleNext}
+          />
+        <ReturnButton 
+        onPress={handleBack}
+        />
       </View>
     );
   } else if (step === 3) {
     return (
       <View style={{ flex: 1 }}>
         <ScreenCadastroTerc onNext={handleNext} />
+        <ReturnButton 
+        onPress={handleBack}
+        />
       </View>
     );
   } else {

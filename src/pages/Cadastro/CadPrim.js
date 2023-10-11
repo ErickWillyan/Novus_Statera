@@ -54,9 +54,6 @@ export default function ScreenCadastroPrim() {
           onChangeText={(text) => setDatanasc(text) }
           />
           <View style={{ height: 58 }} />
-          <CustomButton 
-          title={"Próximo"}
-          />
     </View>
    
     </View>
