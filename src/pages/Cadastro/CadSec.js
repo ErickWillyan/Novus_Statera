@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, Image } from "react-native";
 import ReturnButton from "../../components/ReturnButton";
@@ -6,22 +6,53 @@ import LinkText from "../../components/LinkText";
 import CustomTextInput from "../../components/TextInput";
 import CustomButton from "../../components/CustomButton";
 
-function ScreenCadastroSec() {
+function ScreenCadastroSec({onNext, onGoBack}) {
+  const [cep, setCep] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
-    <ReturnButton/>
+    <ReturnButton
+    onPress={onGoBack}
+    />
     </View>
     <View style={styles.imagem}>
       <Image style={styles.perfil} source={require("../../assets/img/Perfil.png")} />
       <LinkText/>
       </View>
-    <View style={styles.inputs}><CustomTextInput placeholderText={'CEP'} />
-          <CustomTextInput placeholderText={'Endereço'} />
-          <CustomTextInput placeholderText={'Bairro'} />
-          <CustomTextInput placeholderText={'Cidade'} />
+    <View style={styles.inputs}>
+          <CustomTextInput 
+          placeholderText={'CEP'} 
+          value={cep}
+          onChangeText={(text) =>  setCep(text)}
+          />
+
+          <CustomTextInput 
+          placeholderText={'Endereço'}
+          value={endereco}
+          onChangeText={(text) =>  setEndereco(text)}
+          />
+
+          <CustomTextInput 
+          placeholderText={'Bairro'} 
+          value={bairro}
+          onChangeText={(text) =>  setBairro(text)}
+          />
+
+          <CustomTextInput 
+          placeholderText={'Cidade'} 
+          value={cidade}
+          onChangeText={(text) =>  setCidade(text)}
+          />
+
           <View style={{ height: 58 }} />
-          <CustomButton title={"Próximo"}/>
+          <CustomButton 
+          title={"Próximo"}
+          onPress={onNext}
+          />
     </View>
   
     </View>
@@ -58,19 +89,5 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
 });
-
-
-//não tá funcionando
-ScreenCadastroSec.navigationOptions = {
-  tabBarIcon: ({ color, size, focused }) => {
-    size = 30;
-    if (focused) {
-      return <Ionicons name="reader" size={size} color={color} />;
-    }
-    return <Ionicons name="reader-outline" size={size} color={color} />;
-  },
-  headerShown: false,
-};
-//não tá funcionando
 
 export default ScreenCadastroSec;

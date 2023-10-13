@@ -10,20 +10,22 @@ import ScreenLogin from "../login";
 
 
 
-export default function ScreenCadastroPrim() {
-  const [user, setUser] = useState(123);
+export default function ScreenCadastroPrim({onNext, onGoBack}) {
+  //const [user, setUser] = useState(123);
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [rg, setRg] = useState("");
   const [datanasc, setDatanasc] = useState("");
  
-  if(!user){
-    return <ScreenLogin/>
-  }
+  //if(!user){
+    //return <ScreenLogin/>
+  //}
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
-    <ReturnButton/>
+    <ReturnButton
+    onPress={onGoBack}
+    />
     </View> 
     <View style={styles.imagem}>
       <Image style={styles.perfil} source={require("../../assets/img/Perfil.png")} />
@@ -56,6 +58,7 @@ export default function ScreenCadastroPrim() {
           <View style={{ height: 58 }} />
           <CustomButton 
           title={"Próximo"}
+          onPress={onNext}
           />
     </View>
    
