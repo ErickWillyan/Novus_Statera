@@ -55,7 +55,7 @@ export default function ScreenCadastro() {
   } else if (step === 3) {
     return (
       <View style={{ flex: 1 }}>
-        <ScreenCadastroTerc onNext={handleCadastro} onGoBack={handleGoBack}/>
+        <ScreenCadastroTerc onNext={handleNext} onGoBack={handleGoBack}/>
       </View>
     );
   } else {
