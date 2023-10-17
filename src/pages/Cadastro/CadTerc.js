@@ -11,7 +11,8 @@ export default function ScreenCadastroTerc({onNext, onGoBack}) {
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [senha, setSenha] = useState("");
-  const [repetirSenha, setRepetirSenha] = useState("");
+  const [repetSenha, setRepetSenha] = useState("");
+
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
       <View style={styles.return}>
@@ -27,37 +28,37 @@ export default function ScreenCadastroTerc({onNext, onGoBack}) {
         <CustomTextInput 
         placeholderText={'Email'} 
         value={email}
-        onChangeText={(text) =>  setEmail(text)}
+        onChangeText={(text) => setEmail(text) }
         />
 
         <CustomTextInput 
         placeholderText={'Telefone'} 
         value={telefone}
-        onChangeText={(text) =>  setTelefone(text)}
+        onChangeText={(text) => setTelefone(text) }
         />
 
         <CustomTextInput 
         placeholderText={'Senha'} 
         value={senha}
-        onChangeText={(text) =>  setSenha(text)}
+        onChangeText={(text) => setSenha(text) }
         />
 
         <CustomTextInput 
         placeholderText={'Repetir Senha'} 
-        value={repetirSenha}
-        onChangeText={(text) =>  setRepetirSenha(text)}
+        value={repetSenha}
+        onChangeText={(text) => setRepetSenha(text) }
         />
         <View style={{ top: 15, alignItems: "center" }}>
           <RadioButton options={['Coletor', 'Doador']} />
           <View style={{ flexDirection: 'row', alignItems: 'center', top:10 }}>
-            <CustomCheckbox />
+            <CustomCheckbox id= "termos"/>
             <Text style={{ marginLeft: -35, marginRight:1 }}>Eu li e concordo com os</Text>
             <LinkText placeholder={"Termos de uso"}/>
           </View>
         </View>
         <View style={{ height: 58 }} />
         <CustomButton 
-        title={"Próximo"} 
+        title={"Próximo"}
         onPress={onNext}
         />
 
