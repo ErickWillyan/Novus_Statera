@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
-import TextInputComponent from "../../components/textinput
-import { View, Image, StyleSheet, Text } from 'react-native';
-
-
+import CustomTextInput from "../../components/CustomTextInput";
 import LinkText from "../../components/LinkText";
 import { Link } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
 
+import { AuthContext } from "../../contexts/auth";
+
 export default function ScreenLogin() {
+  const [login, setLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { singIn } = useContext(AuthContext);
+
+  async function handleSignIn() {
+    if (email === "" || password === "") {
+      console.log("PREENCHA TODOS OS CAMPOS");
+      return;
+    }
+
+    await singIn(email, password);
+  }
+
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
       <Image
@@ -17,10 +32,22 @@ export default function ScreenLogin() {
       />
       <View style={{ height: 80 }} />
       <View style={styles.inputContainer}>
-        <TextInputComponent placeholderText={"Insira seu email"} />
+        <CustomTextInput
+          valorInput={email}
+          textChange={(text) => {
+            setEmail(text);
+          }}
+          placeholderText={"Insira seu email"}
+        />
         {/* Adicione um espaço vertical entre as TextInput */}
         <View style={{ height: 90 }} />
-        <TextInputComponent placeholderText={"Insira sua senha"} />
+        <CustomTextInput
+          valorInput={password}
+          textChange={(text) => {
+            setPassword(text);
+          }}
+          placeholderText={"Insira sua senha"}
+        />
       </View>
       <View style={{ height: 28 }} />
       <View style={styles.link}>
@@ -30,7 +57,7 @@ export default function ScreenLogin() {
       </View>
       <View style={{ height: 58 }} />
       <View>
-        <CustomButton title={"Entrar"} />
+        <CustomButton title={"Entrar"} onPress={handleSignIn} />
       </View>
       <View style={{ height: 60 }} />
       <View style={[{ flexDirection: "row" }]}>
@@ -39,7 +66,6 @@ export default function ScreenLogin() {
       </View>
     </View>
   );
-
 }
 
 const styles = StyleSheet.create({

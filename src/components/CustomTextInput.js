@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-const CustomTextInput = ({ placeholderText }) => {
-  const [valorInput, setValorInput] = useState("");
-
-  const lidarComMudancaDeInput = (texto) => {
-    setValorInput(texto);
-  };
-
+const CustomTextInput = ({ placeholderText, valorInput, textChange }) => {
+ 
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           value={valorInput}
-          onChangeText={lidarComMudancaDeInput}
+          onChangeText={textChange}
           placeholder={placeholderText}
           placeholderTextColor="#008100"
           underlineColorAndroid="transparent"
