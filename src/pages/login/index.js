@@ -33,8 +33,8 @@ export default function ScreenLogin() {
       <View style={{ height: 80 }} />
       <View style={styles.inputContainer}>
         <CustomTextInput
-          value={email}
-          onChangeText={(text) => {
+          valorInput={email}
+          textChange={(text) => {
             setEmail(text);
           }}
           placeholderText={"Insira seu email"}
@@ -42,8 +42,8 @@ export default function ScreenLogin() {
         {/* Adicione um espaço vertical entre as TextInput */}
         <View style={{ height: 90 }} />
         <CustomTextInput
-          value={password}
-          onChangeText={(text) => {
+          valorInput={password}
+          textChange={(text) => {
             setPassword(text);
           }}
           placeholderText={"Insira sua senha"}
