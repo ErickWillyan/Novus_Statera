@@ -27,6 +27,7 @@ export default function ScreenLogin() {
       </View>
       <View style={{ height: 58 }} />
       <View>
+        cassete
         <CustomButton title={"Entrar"} />
       </View>
       <View style={{ height: 60 }} />
