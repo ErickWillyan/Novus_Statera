@@ -12,7 +12,7 @@ const ReturnButton = ({ onPress }) => {
 
         <TouchableOpacity style={styles.button} onPress={onPress}>
 
-            <AntDesign name="arrowleft" size={24} color="#008100" style={styles.icon} />
+            <AntDesign name="arrowleft" size={26} color="#008100" style={styles.icon} />
 
         </TouchableOpacity>
 
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
 
     button: {
 
-        width: 40, // Largura do botão
+        width: 50, // Largura do botão
 
-        height: 40, // Altura do botão
+        height: 50, // Altura do botão
 
         backgroundColor: '#F5F5F5', // Cor de fundo do botão
 
