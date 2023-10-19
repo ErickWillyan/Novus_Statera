@@ -46,7 +46,5 @@ export default function ScreenCadastro() {
         <ScreenCadastroTerc onNext={handleNext} onGoBack={handleBack}/>
       </View>
     );
-  } else {
-    return <ScreenLogin />;
   }
 }

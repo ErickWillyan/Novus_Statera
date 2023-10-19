@@ -8,6 +8,7 @@ import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
 import { View } from "react-native-web";
 import ScreenCadastro from "../pages/Cadastro/ScreenCadastro";
+import ScreenLogin from "../pages/login";
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +63,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenHome}
+        component={ScreenLogin}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
