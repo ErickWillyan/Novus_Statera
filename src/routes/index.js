@@ -8,7 +8,7 @@ import { AuthContext } from "../contexts/auth";
 
 export default function Routes() {
   const { singed } = useContext(AuthContext);
-  const loading = true;
+  const loading = false;
 
 
   if (loading) {
