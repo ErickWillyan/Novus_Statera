@@ -26,6 +26,7 @@ export default function Routes() {
         tabBarActiveTintColor: "#0FA958",
         tabBarInactiveTintColor: "#0FA958",
         tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "#fff",
           borderTopWidth: 0,
@@ -44,7 +45,7 @@ export default function Routes() {
             }
             return <Ionicons name="heart-outline" size={size} color={color} />;
           },
-          headerShown:false,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -58,7 +59,7 @@ export default function Routes() {
             }
             return <Ionicons name="reader-outline" size={size} color={color} />;
           },
-          headerShown:false,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -74,7 +75,7 @@ export default function Routes() {
               <Ionicons name="home-outline" size={(size = 35)} color={color} />
             );
           },
-          headerShown:false,
+          headerShown: false,
         }}
       />
       <Tab.Screen
