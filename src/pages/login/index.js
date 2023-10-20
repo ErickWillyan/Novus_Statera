@@ -57,7 +57,9 @@ export default function ScreenLogin() {
       </View>
       <View style={{ height: 58 }} />
       <View>
+
         <CustomButton title={"Entrar"} onPress={handleSignIn} />
+
       </View>
       <View style={{ height: 60 }} />
       <View style={[{ flexDirection: "row" }]}>

@@ -8,12 +8,16 @@ import { AuthContext } from "../contexts/auth";
 
 export default function Routes() {
   const { singed } = useContext(AuthContext);
-  const loading = true;
+  const loading = false;
+
 
   if (loading) {
-    <View>
-      <ActivityIndicator color="#fff" />
-    </View>;
+    return(
+    <View style={{ flex:1, justifyContent:"center", alignItems:"center"}}>
+      <ActivityIndicator size={50} color="#008100" />
+    </View>
+
+    )
   }
 
   return singed ? <AppRoutes /> : <AuthRoutes />;
