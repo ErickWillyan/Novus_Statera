@@ -10,10 +10,19 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   async function singIn(email, password) {
-    await firebase.auth().signInWithEmailAndPassword(email, password).then(async (value) => {
-         alert("Bem-vindo:" + value.user.email);
-       });
+    await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(async (value) => {
+        alert("Bem-vindo:" + value.user.email);
 
+        let data = {
+          uid: value.user.uid,
+          email: value.user.email,
+        };
+
+        setUser(data);
+      });
 
     //   let uid = value.user.uid;
     //   const userProfile = await firebase
