@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground, FlatList } from "react-native";
-import { useEffect, useState } from "react";
 import LinkText from "../../components/LinkText";
-
 import firebase from "../../firebase/firebaseConnection";
 
-
 export default function ScreenHome() {
-  const [clientes, setClientes] = useState([]);
+  const [coletores, setColetores] = useState([]);
 
   useEffect(() => {
-    const clientesRef = firebase.database().ref('NovusStatera/TB_COLETOR');
+    const coletoresRef = firebase.database().ref('NovusStatera/TB_COLETOR');
 
-    clientesRef.once('value')
+    coletoresRef.once('value')
       .then(snapshot => {
         const data = snapshot.val();
         if (data) {
-          const clientesArray = Object.values(data);
-          setClientes(clientesArray);
+          const coletoresArray = Object.values(data).slice(0, 5); // Obtém apenas os primeiros 5 coletores
+          setColetores(coletoresArray);
         }
       })
       .catch(error => {
-        console.error('Erro ao buscar dados dos clientes:', error);
+        console.error('Erro ao buscar dados dos coletores:', error);
       });
   }, []);
 
@@ -33,12 +30,12 @@ export default function ScreenHome() {
       >
         <Text>Olá</Text>
         <FlatList
-          data={clientes}
+          data={coletores}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View>
-              <Text>Nome: {item.tb_coletor_nome}</Text>
-              <Text>E-mail: {item.tb_coletor_email}</Text>
+            <View style={styles.itemContainer}>
+              <Text style={styles.itemText}>Nome: {item.tb_coletor_nome}</Text>
+              <Text style={styles.itemText}>E-mail: {item.tb_coletor_email}</Text>
             </View>
           )}
         />
@@ -53,6 +50,12 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: "cover", // Ajuste isso de acordo com sua preferência
+    resizeMode: "cover",
+  },
+  itemContainer: {
+    marginBottom: 10,
+  },
+  itemText: {
+    fontSize: 16,
   },
 });
