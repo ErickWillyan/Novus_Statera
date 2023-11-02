@@ -34,8 +34,8 @@ export default function ScreenCadastroPrim({onNext, onGoBack}) {
     <View style={styles.inputs}>
           <CustomTextInput 
           placeholderText={'Nome'} 
-          value={nome}
-          onChangeText={(text) => setNome(text) }
+          valorInput={nome}
+          textChange={(text) => setNome(text) }
           />
 
           <CustomTextInput 
