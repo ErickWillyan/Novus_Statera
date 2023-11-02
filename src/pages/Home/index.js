@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ImageBackground, FlatList } from "react-native";
-import LinkText from "../../components/LinkText";
+import { View, Text, StyleSheet, ImageBackground, TextInput, FlatList } from "react-native";
 import firebase from "../../firebase/firebaseConnection";
+import CustomSearchBar from "../../components/CustomSearchbar";
 
 export default function ScreenHome() {
   const [coletores, setColetores] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    const coletoresRef = firebase.database().ref('NovusStatera/TB_COLETOR');
+    const coletoresRef = firebase.database().ref('NovusStatera/TB_COLETOR/tb_coletor_nome');
 
     coletoresRef.once('value')
       .then(snapshot => {
         const data = snapshot.val();
         if (data) {
-          const coletoresArray = Object.values(data).slice(0, 5); // Obtém apenas os primeiros 5 coletores
+          const coletoresArray = Object.values(data);
           setColetores(coletoresArray);
         }
       })
@@ -22,33 +23,36 @@ export default function ScreenHome() {
       });
   }, []);
 
+  const filteredColetores = coletores.filter(coletor =>
+    coletor.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../../assets/img/background.png")}
-        style={styles.backgroundImage}
-      >
-        <Text>Olá</Text>
-        <FlatList
-          data={coletores}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.itemContainer}>
-              <Text style={styles.itemText}>Nome: {item.tb_coletor_nome}</Text>
-              <Text style={styles.itemText}>E-mail: {item.tb_coletor_email}</Text>
-            </View>
-          )}
-        />
-      </ImageBackground>
-    </View>
+    <ImageBackground
+      source={require("../../assets/img/background.png")}
+      style={styles.container}
+    >
+      <CustomSearchBar // Substituído o nome da SearchBar
+        placeholder="Digite o nome do coletor"
+        value={searchText}
+        onChangeText={(text) => setSearchText(text)}
+      />
+
+      <FlatList
+        data={filteredColetores}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.itemContainer}>
+            <Text style={styles.itemText}>Nome: {item}</Text>
+          </View>
+        )}
+      />
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  backgroundImage: {
     flex: 1,
     resizeMode: "cover",
   },
