@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ImageBackground, TextInput, FlatList } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, FlatList } from "react-native";
 import firebase from "../../firebase/firebaseConnection";
 import CustomSearchBar from "../../components/CustomSearchbar";
+import CardColetor from "../../components/CardColetor";
 
 export default function ScreenHome() {
   const [coletores, setColetores] = useState([]);
@@ -32,34 +33,47 @@ export default function ScreenHome() {
       source={require("../../assets/img/background.png")}
       style={styles.container}
     >
-      <CustomSearchBar // Substituído o nome da SearchBar
+      <CustomSearchBar
         placeholder="Digite o nome do coletor"
         value={searchText}
         onChangeText={(text) => setSearchText(text)}
       />
-
       <FlatList
         data={filteredColetores}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            <Text style={styles.itemText}>Nome: {item}</Text>
-          </View>
+          <CardColetor
+            nome={item}
+            endereco={getDataEndereco(item, coletores)}
+          />
         )}
       />
     </ImageBackground>
   );
 }
 
+// Função para obter o endereço do array tb_user_endereço
+function getDataEndereco(nomeColetor, coletores) {
+  // Verifica se os arrays tb_user_nome e tb_user_endereço existem
+  if (coletores['tb_user_nome'] && coletores['tb_user_endereço']) {
+    // Obtém o índice do nome no array tb_user_nome
+    const nomeIndex = coletores['tb_user_nome'].indexOf(nomeColetor);
+
+    // Se o nome for encontrado, use o índice para obter o endereço correspondente
+    if (nomeIndex !== -1) {
+      const endereco = coletores['tb_user_endereço'][nomeIndex];
+      return endereco || ''; // Retorna o endereço se existir, caso contrário, retorna uma string vazia
+    }
+  }
+
+  return '';
+}
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     resizeMode: "cover",
-  },
-  itemContainer: {
-    marginBottom: 10,
-  },
-  itemText: {
-    fontSize: 16,
   },
 });
