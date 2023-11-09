@@ -8,7 +8,7 @@ export default function ScreenHome() {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    const coletoresRef = firebase.database().ref('NovusStatera/TB_COLETOR/tb_coletor_nome');
+    const coletoresRef = firebase.database().ref('NovusStatera/TB_USER/tb_user_nome');
 
     coletoresRef.once('value')
       .then(snapshot => {
