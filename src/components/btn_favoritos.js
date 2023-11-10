@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone de coração
+import { Icon }from 'react-native-vector-icons/FontAwesome'; // Importe o ícone de coração
 
 const btn_fav = () => {
   const [heartColor, setHeartColor] = useState('red'); // Estado para controlar a cor do ícone
