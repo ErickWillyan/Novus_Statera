@@ -9,6 +9,7 @@ export const RegisterUserProvider = ({ children }) => {
   const handleSubmit = (data) => {
     // fazer função de inser aqui dentro
     // o parametro "data" contém todos os dados do usuário
+    //
   };
 
   const handleNextStep = (data) => {
