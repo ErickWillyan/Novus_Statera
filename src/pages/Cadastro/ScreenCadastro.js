@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import ScreenCadastroPrim from "./CadPrim";
-import ScreenCadastroSec from "./CadSec";
-import ScreenCadastroTerc from "./CadTerc";
+import ScreenCadastroPrim from "./components/CadPrim";
+import ScreenCadastroSec from "./components/CadSec";
+import ScreenCadastroTerc from "./components/CadTerc";
 import ScreenLogin from "../login";
+import { RegisterUserProvider } from "./context/register";
+import { StepForm } from "./components";
 
 export default function ScreenCadastro() {
   const [step, setStep] = useState(1);
+  const [data, setData] = useState();
   const navigation = useNavigation();
 
   const handleNext = () => {
@@ -18,33 +21,11 @@ export default function ScreenCadastro() {
     }
   };
 
-  const handleBack = () => {
-    if (step === 3) {
-      setStep(2)
-    } else if (step === 2){
-      setStep(1)
-    }
-  }
-
-
-
-  if (step === 1) {
-    return (
+  return (
+    <RegisterUserProvider>
       <View style={{ flex: 1 }}>
-        <ScreenCadastroPrim onNext={handleNext} targetScreen={"Login"}/>
+        <StepForm />
       </View>
-    );
-  } else if (step === 2) {
-    return (
-      <View style={{ flex: 1 }}>
-        <ScreenCadastroSec onNext={handleNext} onGoBack={handleBack}/>
-      </View>
-    );
-  } else if (step === 3) {
-    return (
-      <View style={{ flex: 1 }}>
-        <ScreenCadastroTerc onNext={handleNext} onGoBack={handleBack}/>
-      </View>
-    );
-  }
+    </RegisterUserProvider>
+  );
 }
