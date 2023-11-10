@@ -61,7 +61,7 @@ export default function ScreenCadastroTerc({onNext, onGoBack}) {
         </View>
         <View style={{ height: 58 }} />
         <CustomButton 
-        title={"Próximo"}
+        title={"Cadastrar"}
         onPress={onNext}
         />
 

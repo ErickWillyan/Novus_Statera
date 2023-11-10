@@ -10,13 +10,20 @@ import ScreenLogin from "../login";
 
 
 
-export default function ScreenCadastroPrim({onNext, onGoBack}) {
+export default function ScreenCadastroPrim({onNext, targetScreen}) {
   //const [user, setUser] = useState(123);
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [rg, setRg] = useState("");
   const [datanasc, setDatanasc] = useState("");
  
+  const navigation = useNavigation();
+
+  const handleNavigation = () => {
+    // Navegue para a tela alvo quando o link for clicado
+    navigation.navigate(targetScreen);
+  };
+
   //if(!user){
     //return <ScreenLogin/>
   //}
@@ -24,7 +31,7 @@ export default function ScreenCadastroPrim({onNext, onGoBack}) {
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
     <View style={styles.return}>
     <ReturnButton
-    onPress={onGoBack}
+    onPress={handleNavigation}
     />
     </View> 
     <View style={styles.imagem}>

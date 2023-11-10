@@ -31,7 +31,7 @@ export default function ScreenCadastro() {
   if (step === 1) {
     return (
       <View style={{ flex: 1 }}>
-        <ScreenCadastroPrim onNext={handleNext} onGoBack={handleBack}/>
+        <ScreenCadastroPrim onNext={handleNext} targetScreen={"Login"}/>
       </View>
     );
   } else if (step === 2) {
