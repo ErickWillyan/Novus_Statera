@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     overflow: 'hidden',
+    marginBottom:15,
+    marginTop:30
   },
   profileImageWrapper: {
     width: 109,
@@ -44,6 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   nomeText: {
     fontSize: 16,

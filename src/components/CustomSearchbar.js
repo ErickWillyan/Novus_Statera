@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#E2E2E2",
     padding: 10,
     borderRadius: 30,
-    width: 280, // Defina a largura desejada
+    width: 280,
+    marginTop: 20,
+    marginBottom:10
   },
   input: {
     backgroundColor: "#E2E2E2",
