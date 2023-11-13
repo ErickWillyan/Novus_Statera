@@ -12,6 +12,7 @@ import ScreenCadastroPrim from "../pages/Cadastro/CadPrim";
 import ScreenLogin from "../pages/login";
 import ScreenCadastroSec from "../pages/Cadastro/CadSec";
 import ScreenCadastroTerc from "../pages/Cadastro/CadTerc";
+import ScreenPerfilColetor from "../pages/PerfilColetor";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenFavoritos}
+        component={ScreenPerfilColetor}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
