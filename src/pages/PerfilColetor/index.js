@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
+import CardColetor from "../../components/CardColetor";
 
 export default function ScreenPerfilColetor({ route }) {
     return (
@@ -19,10 +20,12 @@ export default function ScreenPerfilColetor({ route }) {
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.nome}>{`Nome`}</Text>
+                <Text style={styles.endereco}>{`Endereço`}</Text>
             </View>
             <View style={styles.FavContainer}>
-                <Favorito />
+                <Favorito /> 
             </View>
+            <CardColetor style={styles.cardColetor} title="Título do Card" content="Conteúdo do Card" />
         </View>
     );
 }
@@ -36,9 +39,10 @@ const styles = StyleSheet.create({
     profileImage: {
         width: 400,
         height: 410,
-        marginBottom: 345,
+        top:-2,
         borderWidth: 2,
         borderColor: "white",
+        position: "absolute"
     },
     buttonContainer: {
         position: "absolute",
@@ -47,18 +51,25 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         position: "absolute",
-        bottom: 20,
+        left:5,
+        bottom:200
     },
     FavContainer: {
         position: "absolute",
-        bottom: 20,
+        bottom: 280,
         right: 10
     },
     nome: {
     color: "black",
     fontSize: 50,
-    bottom: 350,
-    right: 120,
     fontWeight: "bold",
-},
+    },
+    endereco:{
+    color: "grey",
+    fontSize: 20,
+    fontWeight: "bold",
+    },
+    cardColetor: {
+        bottom: 10,
+    },
 });
