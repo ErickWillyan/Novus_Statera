@@ -12,10 +12,11 @@ export default function ScreenPerfilColetor({ route }) {
                 style={styles.profileImage}
             />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={() => console.log("Botão de Retorno Pressionado")}
-                >
+                <TouchableOpacity style={{right:'300%'}}>
                     <ReturnButton />
+                </TouchableOpacity>
+                <TouchableOpacity style={{left:'300%'}}>
+                    <ReturnButton/>
                 </TouchableOpacity>
             </View>
             <View style={styles.textContainer}>
@@ -25,7 +26,9 @@ export default function ScreenPerfilColetor({ route }) {
             <View style={styles.FavContainer}>
                 <Favorito /> 
             </View>
-            <CardColetor style={styles.cardColetor} title="Título do Card" content="Conteúdo do Card" />
+            <View style={{top:250}}>
+            <CardColetor style={styles.card} coletas="125" avaliacao={1.5}/>
+            </View>
         </View>
     );
 }
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     profileImage: {
-        width: 400,
+        width: '101%',
         height: 410,
         top:-2,
         borderWidth: 2,
@@ -47,7 +50,9 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: "absolute",
         top: 20,
-        left: 20,
+        flex:1,
+        flexDirection:"row",
+
     },
     textContainer: {
         position: "absolute",
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
     },
     FavContainer: {
         position: "absolute",
-        bottom: 280,
+        bottom: 240,
         right: 10
     },
     nome: {
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     },
-    cardColetor: {
-        bottom: 10,
+    card: {
+        bottom: "10",
     },
 });
