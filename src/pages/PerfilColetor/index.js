@@ -1,12 +1,26 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
 import CardColetor from "../../components/CardColetor";
 
+import Calendario from "../../components/Calendario";
+
 export default function ScreenPerfilColetor({ route }) {
+
+    const [modalOpen, setModalOpen] = useState (false);
+
     return (
         <View style={styles.container}>
+            <Modal style={styles.modal} visible={modalOpen} animationType="slide" >
+                <View>
+                    <ReturnButton onPress={() => setModalOpen(false)}/>
+                    <View>
+                        <Calendario/>
+                    </View>
+                </View>
+            </Modal>
             <Image
                 source={require("../../assets/img/Juan.jpg")}
                 style={styles.profileImage}
@@ -15,8 +29,8 @@ export default function ScreenPerfilColetor({ route }) {
                 <TouchableOpacity style={{right:'300%'}}>
                     <ReturnButton />
                 </TouchableOpacity>
-                <TouchableOpacity style={{left:'300%'}}>
-                    <ReturnButton/>
+                <TouchableOpacity style={{left:'300%'}} onPress={() => setModalOpen(true)}>
+                    <Text>Olá</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.textContainer}>
@@ -76,5 +90,10 @@ const styles = StyleSheet.create({
     },
     card: {
         bottom: "10",
+    },
+    modal: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        marginBottom: 0, 
     },
 });

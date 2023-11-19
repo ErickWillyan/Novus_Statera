@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     left:12
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     color:"#544747"
   },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   coletas:{
-    fontSize:16,
+    fontSize:14,
     color:'#008100',
     textDecorationLine:"underline",
   },
