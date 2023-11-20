@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const CardComponent = ({coletas, avaliacao}) => {
+const ColetorInfo = ({coletas, avaliacao}) => {
   const star = '⭐';
 
   return (
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CardComponent;
+export default ColetorInfo;

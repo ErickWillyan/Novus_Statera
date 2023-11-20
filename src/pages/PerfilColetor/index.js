@@ -3,8 +3,7 @@ import { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
-import CardColetor from "../../components/CardColetor";
-
+import ColetorInfo from "../../components/ColetorInfo";
 import Calendario from "../../components/Calendario";
 
 export default function ScreenPerfilColetor({ route }) {
@@ -26,11 +25,11 @@ export default function ScreenPerfilColetor({ route }) {
                 style={styles.profileImage}
             />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={{right:'300%'}}>
+                <TouchableOpacity style={{right:'250%'}}>
                     <ReturnButton />
                 </TouchableOpacity>
-                <TouchableOpacity style={{left:'300%'}} onPress={() => setModalOpen(true)}>
-                    <Text>Olá</Text>
+                <TouchableOpacity style={{left:'250%'}} onPress={() => setModalOpen(true)}>
+                    <Text>Agendar</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.textContainer}>
@@ -41,7 +40,7 @@ export default function ScreenPerfilColetor({ route }) {
                 <Favorito /> 
             </View>
             <View style={{top:250}}>
-            <CardColetor style={styles.card} coletas="125" avaliacao={1.5}/>
+            <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5}/>
             </View>
         </View>
     );
