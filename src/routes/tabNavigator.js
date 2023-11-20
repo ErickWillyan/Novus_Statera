@@ -1,21 +1,22 @@
-import React from "react";
+import React, {useState}  from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import ScreenCadastro from "../pages/Cadastro/CadPrim";
+import {Ionicons} from "@expo/vector-icons"
 import ScreenFavoritos from "../pages/favoritos";
 import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
-import { View } from "react-native-web";
-import ScreenCadastroPrim from "../pages/Cadastro/CadPrim";
 import ScreenLogin from "../pages/login";
-import ScreenCadastroSec from "../pages/Cadastro/CadSec";
-import ScreenCadastroTerc from "../pages/Cadastro/CadTerc";
 
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
+  const [user, setUser] = useState();
+
+  //if(!user){
+    //return <ScreenCadastro changeStatus={(user)=> setUser(user)} />
+  //}
+ 
   return (
     <Tab.Navigator
       initialRouteName="Home"
