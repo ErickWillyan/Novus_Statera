@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import LinkText from "../../components/LinkText";
-import { Link } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
+
 
 import { AuthContext } from "../../contexts/auth";
 
@@ -57,12 +57,14 @@ export default function ScreenLogin() {
       </View>
       <View style={{ height: 58 }} />
       <View>
+
         <CustomButton title={"Entrar"} onPress={handleSignIn} />
+
       </View>
       <View style={{ height: 60 }} />
       <View style={[{ flexDirection: "row" }]}>
         <Text style={styles.text}>Não possui uma conta?</Text>
-        <LinkText placeholder={"Clique aqui"} />
+        <LinkText placeholder={"Clique aqui"}    targetScreen={"Cadastro"}  />
       </View>
     </View>
   );
