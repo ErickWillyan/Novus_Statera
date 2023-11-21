@@ -5,7 +5,7 @@ import ScreenFavoritos from "../pages/favoritos";
 import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
-import ScreenPerfil from "../pages/perfil";
+import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ScreenLogin from "../pages/login";
 
 const Tab = createBottomTabNavigator();
@@ -93,7 +93,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Perfil"
-        component={ScreenPerfil}
+        component={ProfileScreenDoador}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
