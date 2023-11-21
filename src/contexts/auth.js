@@ -4,7 +4,7 @@ import React, { useState, useContext, createContext } from "react";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState("dvdrg");
+  const [user, setUser] = useState();
 
   async function singIn(email, password) {
     
