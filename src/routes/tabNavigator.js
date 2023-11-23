@@ -6,7 +6,9 @@ import ScreenHistorico from "../pages/historico_coleta";
 import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
+import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
+import ProfileScreen from "../pages/perfil/ProfileScreen"
 
 const Tab = createBottomTabNavigator();
 
@@ -93,7 +95,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Perfil"
-        component={ProfileScreenDoador}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

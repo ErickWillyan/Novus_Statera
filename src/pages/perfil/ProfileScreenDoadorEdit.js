@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { Avatar, Card } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import ReturnButton from '../../components/ReturnButton';
 
-const ProfileScreenDoador = ({ onEditPress }) => {
+const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
   const user = {
     nome: 'Mário da Silva Jesus',
     local: 'Itapevi - SP',
@@ -15,8 +15,18 @@ const ProfileScreenDoador = ({ onEditPress }) => {
     senha: '********',
   };
 
+  const handleReturnPress = () => {
+    // Chame a função onCancelEdit para cancelar a edição
+    onCancelEdit();
+    // Navegue de volta para a tela ProfileScreenDoador
+    navigation.navigate('ProfileScreenDoador');
+  };
+
   return (
     <View style={styles.container}>
+    <View style={styles.returnView}>
+      <ReturnButton style={styles.returnButton} onPress={handleReturnPress}/>
+    </View>
       <Card containerStyle={styles.cardContainerAvatar}>
         <View style={styles.avatarContainer}>
         <Avatar
@@ -27,13 +37,12 @@ const ProfileScreenDoador = ({ onEditPress }) => {
           }}
         />
         </View>
-        <Text style={styles.userNome}>{user.nome}</Text>
-        <Text style={styles.userLocal}>{user.local}</Text>
       </Card>
-      <Card containerStyle={styles.cardContainerDonations}>
-        <Text style={{fontSize: 20, color: 'white', textAlign: 'center'}}>Já realizou: </Text>
-        <Text style={{fontSize: 32, color: '#058300', textAlign: 'center'}}>{user.doacoes} doações</Text>
+      <View style={styles.viewText}>
+      <Card containerStyle={styles.cardContainerEdit}>
+      <Text style={styles.textEdit}>Clique em um campo para editar</Text>
       </Card>
+      </View>
       <Card containerStyle={styles.cardContainerInfos}>
 
         <Text style={styles.textType}>Nome de usuário:</Text>
@@ -49,12 +58,6 @@ const ProfileScreenDoador = ({ onEditPress }) => {
         <Text style={styles.textInfo}>{user.endereco}</Text>
       
       </Card>
-      <TouchableOpacity
-        style={styles.editButton}
-        onPress={onEditPress}
-      >
-        <Icon name="edit" size={30} color="#028100" />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
     shadowColor: 'transparent',
     width: '80%', 
     height: '40%',
+    marginBottom: -140,
   },
   cardContainerDonations: {
     marginTop: -60,
@@ -104,14 +108,20 @@ const styles = StyleSheet.create({
     borderBottomColor: '#9D4F05',
   },
   cardContainerInfos: {
-    marginTop: 35 ,
+    marginTop: -17 ,
     width: '92%',
-    height: '410px',
+    height: '520px',
     overflowY: 'scroll',
     borderRadius: 40,
   },
   cardWrapper: {
     borderWidth: 0,
+  },
+  returnView: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
   },
   avatarContainer: {
     alignItems: 'center',
@@ -120,25 +130,26 @@ const styles = StyleSheet.create({
   textInfo: {
     fontSize: 21,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 25,
     textAlign: 'center',
     color: '#6E6E6F',
-    paddingBottom: 20,
+    paddingBottom: 25,
   },
   textType: {
-    fontSize: 14,
+    fontSize: 28,
     color: 'gray',
-    marginTop: 5,
+    marginTop: 15,
     textAlign: 'center',
-    marginTop: 5,
+    marginTop: 15,
   },
-  editButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    backgroundColor: 'transparent', // ou a cor desejada
-    borderRadius: 50,
-    padding: 10,
+  viewText: {
+    marginBottom: 60,
   },
+  textEdit: {
+    fontSize: 22,
+  },
+  cardConainerEdit: {
+    borderRadius: 20,
+  }
 });
-export default ProfileScreenDoador;
+export default ProfileScreenDoadorEdit;

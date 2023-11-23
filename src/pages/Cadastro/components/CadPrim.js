@@ -5,7 +5,6 @@ import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
-import ScreenLogin from "../../login";
 import { useRegisterUser } from "../context/register";
 
 export default function ScreenCadastroPrim() {
