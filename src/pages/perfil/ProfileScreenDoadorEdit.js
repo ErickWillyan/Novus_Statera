@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Avatar, Card } from 'react-native-elements';
 import ReturnButton from '../../components/ReturnButton';
+import CustomTextInput from '../../components/CustomTextInput';
 
 const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
   const user = {
@@ -46,7 +47,10 @@ const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
       <Card containerStyle={styles.cardContainerInfos}>
 
         <Text style={styles.textType}>Nome de usuário:</Text>
-        <Text style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}>{user.nome}</Text>
+        <CustomTextInput 
+          style={[styles.textInfo, 
+                  {borderBottomWidth: 1, borderColor: 'gray'}]}
+          placeholderText={user.nome}></CustomTextInput>
 
         <Text style={styles.textType}>Registro Geral:</Text>
         <Text style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}>{user.rg}</Text>
