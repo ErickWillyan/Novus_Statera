@@ -5,18 +5,51 @@ import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
 import ColetorInfo from "../../components/ColetorInfo";
 import Calendario from "../../components/Calendario";
+import NumberSelector from "../../components/NumberSelector";
+import CustomDropDown from "../../components/CustomDropDown";
+
+
 
 export default function ScreenPerfilColetor({ route }) {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
 
-    const [modalOpen, setModalOpen] = useState (false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const dropdownOptions = [
+        { label: 'Garrafa Pet', value: 'Garrafa Pet' },
+        { label: 'Galão', value: 'Galão' },
+        { label: 'Pote de vidro', value: 'Pote de Vidro' },
+    ];
+
+    const handleDropdownChange = (value) => {
+        setSelectedOption(value);
+        console.log('Opção Selecionada:', value);
+    };
+
+    const handleTimeSelected = (time) => {
+        console.log('Tempo selecionado:', time);
+    };    
 
     return (
         <View style={styles.container}>
-            <Modal style={styles.modal} visible={modalOpen} animationType="slide" >
+            <Modal style={styles.modal} visible={modalOpen} animationType="slide">
                 <View>
-                    <ReturnButton onPress={() => setModalOpen(false)}/>
+                    <ReturnButton onPress={closeModal} />
                     <View>
-                        <Calendario/>
+                        <Calendario />
+                    </View>
+                        <View>
+                            <NumberSelector/>
+                        </View>
+                    <View>
+                        <CustomDropDown options={dropdownOptions} onChange={handleDropdownChange} />
                     </View>
                 </View>
             </Modal>
@@ -25,10 +58,10 @@ export default function ScreenPerfilColetor({ route }) {
                 style={styles.profileImage}
             />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={{right:'250%'}}>
+                <TouchableOpacity style={{ right: '250%' }}>
                     <ReturnButton />
                 </TouchableOpacity>
-                <TouchableOpacity style={{left:'250%'}} onPress={() => setModalOpen(true)}>
+                <TouchableOpacity style={{ left: '250%' }} onPress={() => setModalOpen(true)}>
                     <Text>Agendar</Text>
                 </TouchableOpacity>
             </View>
@@ -37,10 +70,10 @@ export default function ScreenPerfilColetor({ route }) {
                 <Text style={styles.endereco}>{`Endereço`}</Text>
             </View>
             <View style={styles.FavContainer}>
-                <Favorito /> 
+                <Favorito />
             </View>
-            <View style={{top:250}}>
-            <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5}/>
+            <View style={{ top: 250 }}>
+                <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
             </View>
         </View>
     );
@@ -55,7 +88,7 @@ const styles = StyleSheet.create({
     profileImage: {
         width: '101%',
         height: 410,
-        top:-2,
+        top: -2,
         borderWidth: 2,
         borderColor: "white",
         position: "absolute"
@@ -63,14 +96,14 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: "absolute",
         top: 20,
-        flex:1,
-        flexDirection:"row",
+        flex: 1,
+        flexDirection: "row",
 
     },
     textContainer: {
         position: "absolute",
-        left:5,
-        bottom:200
+        left: 5,
+        bottom: 200
     },
     FavContainer: {
         position: "absolute",
@@ -78,14 +111,14 @@ const styles = StyleSheet.create({
         right: 10
     },
     nome: {
-    color: "black",
-    fontSize: 50,
-    fontWeight: "bold",
+        color: "black",
+        fontSize: 50,
+        fontWeight: "bold",
     },
-    endereco:{
-    color: "grey",
-    fontSize: 20,
-    fontWeight: "bold",
+    endereco: {
+        color: "grey",
+        fontSize: 20,
+        fontWeight: "bold",
     },
     card: {
         bottom: "10",
@@ -93,6 +126,6 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         justifyContent: 'flex-end',
-        marginBottom: 0, 
+        marginBottom: 0,
     },
 });
