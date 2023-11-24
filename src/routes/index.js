@@ -7,7 +7,7 @@ import AppRoutes from "./main_routes.routes";
 import { AuthContext } from "../contexts/auth";
 
 export default function Routes() {
-  const { singed } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const loading = false;
 
 
@@ -19,6 +19,6 @@ export default function Routes() {
 
     )
   }
-
-  return singed ? <AppRoutes /> : <AuthRoutes />;
+  
+  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
 }
