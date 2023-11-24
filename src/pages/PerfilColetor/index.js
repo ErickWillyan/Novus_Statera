@@ -6,7 +6,7 @@ import Favorito from "../../components/Favorito";
 import ColetorInfo from "../../components/ColetorInfo";
 import Calendario from "../../components/Calendario";
 import NumberSelector from "../../components/NumberSelector";
-import CustomDropDown from "../../components/CustomDropDown";
+
 
 
 
@@ -21,14 +21,7 @@ export default function ScreenPerfilColetor({ route }) {
     const closeModal = () => {
         setModalOpen(false);
     };
-
-    const dropdownOptions = [
-        { label: 'Garrafa Pet', value: 'Garrafa Pet' },
-        { label: 'Galão', value: 'Galão' },
-        { label: 'Pote de vidro', value: 'Pote de Vidro' },
-    ];
-
-    const handleDropdownChange = (value) => {
+        const handleDropdownChange = (value) => {
         setSelectedOption(value);
         console.log('Opção Selecionada:', value);
     };
@@ -41,16 +34,20 @@ export default function ScreenPerfilColetor({ route }) {
         <View style={styles.container}>
             <Modal style={styles.modal} visible={modalOpen} animationType="slide">
                 <View>
+                    <View style={{marginTop:10, marginLeft:10}}>
                     <ReturnButton onPress={closeModal} />
-                    <View>
+                    </View>
+                    <View style={{alignSelf:"center", fontSize:20}}><Text style={{fontSize:35, bottom:"100%", color:"#429241"}}>Agendar Coleta</Text></View>
+                    <View style={{bottom:80}}>
+                    <View style={{top:70, left:130}}>
+                        <Text style={{fontSize:20, color:"#429241"}}>Selecione um dia</Text>
+                    </View>
                         <Calendario />
                     </View>
-                        <View>
+                        <View style={{bottom:70, right:90, bottom:140, alignSelf:"center"}}>
+                        <View><Text style={{fontSize:20, left:0, color:"#429241"}}>Quantidade de óleo</Text></View>
                             <NumberSelector/>
                         </View>
-                    <View>
-                        <CustomDropDown options={dropdownOptions} onChange={handleDropdownChange} />
-                    </View>
                 </View>
             </Modal>
             <Image
