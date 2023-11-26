@@ -35,7 +35,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenPerfilColetor}
+        component={ScreenFavoritos}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -49,7 +49,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Historico_Coleta"
-        component={ScreenPontoColeta}
+        component={ScreenHistorico}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
