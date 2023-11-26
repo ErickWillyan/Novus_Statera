@@ -1,19 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Avatar, Card } from 'react-native-elements';
 import ReturnButton from '../../components/ReturnButton';
+import CustomButton from '../../components/CustomButton';
+import CustomTextInput from '../../components/CustomTextInput';
 
 const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
-  const user = {
-    nome: 'Mário da Silva Jesus',
-    local: 'Itapevi - SP',
-    doacoes: '15',
-    rg: '31.440.XXX-X',
-    telefone: '(11) 92776-0676',
-    endereco: 'Av. Brasil, 180, Jardim São Luis, Santana de Parnaíba - SP',
-    email: 'mariobaigon@gmail.com',
-    senha: '********',
-  };
+  // const user = {
+  //   nome: 'Mário da Silva Jesus',
+  //   local: 'Itapevi - SP',
+  //   doacoes: '15',
+  //   rg: '31.440.XXX-X',
+  //   telefone: '(11) 92776-0676',
+  //   endereco: 'Av. Brasil, 180, Jardim São Luis, Santana de Parnaíba - SP',
+  //   email: 'mariobaigon@gmail.com',
+  //   senha: '********',
+  // };
+
+  const [nome, setNome] = useState("Mário da Silva Jesus");
+  const [rg, setRg] = useState("31.440.XXX-X");
+  const [telefone, setTelefone] = useState("(11) 92776-0676");
+  const [endereco, setEndereco] = useState("Av. Brasil, 180, Jardim São Luis, Santana de Parnaíba - SP");
 
   const handleReturnPress = () => {
     // Chame a função onCancelEdit para cancelar a edição
@@ -27,7 +34,7 @@ const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
     <View style={styles.returnView}>
       <ReturnButton style={styles.returnButton} onPress={handleReturnPress}/>
     </View>
-      <Card containerStyle={styles.cardContainerAvatar}>
+      <Card containerStyle={[styles.cardContainerAvatar, {width: '50%'}]}>
         <View style={styles.avatarContainer}>
         <Avatar
           size="xlarge"
@@ -46,18 +53,44 @@ const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
       <Card containerStyle={styles.cardContainerInfos}>
 
         <Text style={styles.textType}>Nome de usuário:</Text>
-        <Text style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}>{user.nome}</Text>
+        <CustomTextInput 
+          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
+          placeholderText={nome}
+          valorInput={nome}
+          textChange={(text) => setNome(text)}
+          />
 
         <Text style={styles.textType}>Registro Geral:</Text>
-        <Text style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}>{user.rg}</Text>
+        <CustomTextInput 
+          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
+          placeholderText={rg}
+          valorInput={rg}
+          textChange={(text) => setRg(text)}
+          />
 
         <Text style={styles.textType}>Telefone</Text>
-        <Text style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}>{user.telefone}</Text>
-        
+        <CustomTextInput 
+          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
+          placeholderText={telefone}
+          valorInput={telefone}
+          textChange={(text) => setTelefone(text)}
+          />
+
         <Text style={styles.textType}>Endereço</Text>
-        <Text style={styles.textInfo}>{user.endereco}</Text>
+        <CustomTextInput 
+          style={styles.textInfo}
+          placeholderText={endereco}
+          valorInput={endereco}
+          textChange={(text) => setEndereco(text)}
+          />
       
       </Card>
+      <View style={styles.buttonView}>
+        <CustomButton
+          title={"Confirmar"}
+          onPress={""}
+          />
+      </View>
     </View>
   );
 };
@@ -84,11 +117,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   cardContainerAvatar: {
-    backgroundColor: 'transparent', // Cor de fundo desejada
-    borderColor: 'transparent', // Cor da borda
-    borderWidth: 0, // Largura da borda
-    borderRadius: 0, // Raio da borda
-    elevation: 0, // Sombra no Android
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 0,
+    elevation: 0,
     shadowColor: 'transparent',
     width: '80%', 
     height: '40%',
@@ -110,7 +143,7 @@ const styles = StyleSheet.create({
   cardContainerInfos: {
     marginTop: -17 ,
     width: '92%',
-    height: '520px',
+    height: '50%',
     overflowY: 'scroll',
     borderRadius: 40,
   },
@@ -150,6 +183,9 @@ const styles = StyleSheet.create({
   },
   cardConainerEdit: {
     borderRadius: 20,
-  }
+  },
+  buttonView: {
+    marginTop: 20,
+  },
 });
 export default ProfileScreenDoadorEdit;

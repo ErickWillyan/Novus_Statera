@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const ProfileScreenDoador = ({ onEditPress }) => {
   const user = {
     nome: 'Mário da Silva Jesus',
-    local: 'Itapevi - SP',
+    local: 'Santana de Parnaíba - SP',
     doacoes: '15',
     rg: '31.440.XXX-X',
     telefone: '(11) 92776-0676',
@@ -23,7 +23,7 @@ const ProfileScreenDoador = ({ onEditPress }) => {
           size="xlarge"
           rounded
           source={{
-            uri: '../../assets/img/Erickbeminclusivo.jpg',
+            uri: '../../assts/img/Logo.png',
           }}
         />
         </View>
