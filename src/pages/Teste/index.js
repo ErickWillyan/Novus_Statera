@@ -7,20 +7,19 @@ import { useRoute } from "@react-navigation/native";
 
 export default function Teste() {
   const route = useRoute();
-  const userId = route.params.userId;
   const [user, setUser] = useState({});
 
   useEffect(() => {
     async function DetailColetor() {
       const response = await api.get("/DetailColetor", {
-        params: { userId: userId },
+        params: { user_id: route.params.userId },
       });
 
-      setUser(response);
+      setUser(response.data);
     }
 
     DetailColetor();
-  }, [userId]);
+  }, [route.params.userId]);
 
   return (
     <View>
