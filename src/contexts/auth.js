@@ -1,46 +1,60 @@
-import React, { useState, useContext, createContext } from "react";
-import firebase from "../firebase/firebaseConnection";
+import React, { useState, createContext } from "react";
 
-// import auth from '@react-native-firebase/auth';
-// import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
+import { api }  from "../libs/api"
+
 
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    id: '',
+    name: '',
+    email: '',
+    rg: '',
+    telefone: '',
+    type: '',
+    token: ''
+  });
 
-  async function singIn(email, password) {
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(async (value) => {
-        alert("Bem-vindo:" + value.user.email);
+  const isAuthenticated = !!user.name;
 
-        let data = {
-          uid: value.user.uid,
-          email: value.user.email,
-        };
+    async function singIn({ email, password}) {
 
-        setUser(data);
-      });
+try {
+  const response = await api.post("/session", {email, password});
 
-    //   let uid = value.user.uid;
-    //   const userProfile = await firebase
-    //     .firestore()
-    //     .collection("users")
-    //     .doc(uid)
-    //     .get();
-    //   let data = {
-    //     uid: uid,
-    //     nome: userProfile.data().nome,
-    //     email: value.user.email,
-    //   };
-    // console.log(useProfile.data().nome);
-    // });
+  const { id,name,email,rg,telefone,type,token} = response.data;
+
+  const data ={
+    ...response.data
   }
 
+  await AsyncStorage.setItem('@novusstatera', JSON.stringify(data));
+
+  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+  setUser
+  ({id,
+    name,
+    email,
+    rg,
+    telefone,
+    type,
+    token})
+
+  
+} catch (error) {
+  console.log("erro ao acessar", error)
+}
+   
+  }
+
+  
+
   return (
-    <AuthContext.Provider value={{ singed: !!user, singIn }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, singIn }}>
       {children}
     </AuthContext.Provider>
   );

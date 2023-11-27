@@ -2,18 +2,17 @@ import React, { useState, useContext } from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import LinkText from "../../components/LinkText";
-import { Link } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
+
 
 import { AuthContext } from "../../contexts/auth";
 
 export default function ScreenLogin() {
-  const [login, setLogin] = useState(true);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const { singIn } = useContext(AuthContext);
+  const { singIn, isAuthenticated, user } = useContext(AuthContext);
 
   async function handleSignIn() {
     if (email === "" || password === "") {
@@ -21,7 +20,12 @@ export default function ScreenLogin() {
       return;
     }
 
-    await singIn(email, password);
+    await singIn({email, password});
+
+    console.log(email)
+    console.log(password)
+    console.log(isAuthenticated)
+    console.log(user)
   }
 
   return (
@@ -64,7 +68,7 @@ export default function ScreenLogin() {
       <View style={{ height: 60 }} />
       <View style={[{ flexDirection: "row" }]}>
         <Text style={styles.text}>Não possui uma conta?</Text>
-        <LinkText placeholder={"Clique aqui"} />
+        <LinkText placeholder={"Clique aqui"}    targetScreen={"Cadastro"}  />
       </View>
     </View>
   );
