@@ -2,17 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal, ScrollView } from "react-native";
 import ReturnButton from "../../components/ReturnButton";
-import Favorito from "../../components/Favorito";
-import ColetorInfo from "../../components/ColetorInfo";
-import { FontAwesome } from '@expo/vector-icons';
 import Calendario from "../../components/Calendario";
 import NumberSelector from "../../components/NumberSelector";
 import ManualTimePicker from "../../components/ManualTimePicker";
 import CustomDropDown from "../../components/CustomDropDown";
-import CustoButton from "../../components/CustomButton";
 import CustomButton from "../../components/CustomButton";
 
-export default function ScreenPerfilColetor({ route }) {
+export default function ScreenAgendarColeta() {
+    
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -40,31 +37,43 @@ export default function ScreenPerfilColetor({ route }) {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../../assets/img/Juan.jpg")}
-        style={styles.profileImage}
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={{ right: '280%' }}>
-          <ReturnButton />
-        </TouchableOpacity>
-        <TouchableOpacity style={{ left: '260%' }} onPress={() => setModalOpen(true)}>
-          <FontAwesome name="calendar" size={30} color="white" />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.nome}>{`Nome`}</Text>
-        <Text style={styles.endereco}>{`Endereço`}</Text>
-      </View>
-      <View style={styles.FavContainer}>
-        <Favorito />
-      </View>
-      <View style={{ top: 250 }}>
-        <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
-      </View>
+       <View style={styles.modalContent}>
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.header}>
+              <ReturnButton onPress={closeModal} />
+              <Text style={styles.modalTitle}>Agendar Coleta</Text>
+            </View>
+            <View style={styles.body}>
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Selecione um dia</Text>
+                <Calendario />
+              </View>
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Quantidade de óleo</Text>
+                <NumberSelector />
+              </View>
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Adicionar Horário de coleta</Text>
+                <ManualTimePicker onTimeSelected={handleTimeSelected} />
+              </View>
+              <View style={styles.section}>
+              <View style={styles.sectionContent}>                  
+              <Text style={styles.sectionTitle}>Local da coleta</Text></View>  
+                <View style={styles.sectionContent}>
+                  <CustomDropDown options={dropdownOptions} onChange={handleDropdownChange} />
+                  <CustomButton title="+" customWidth={40} />
+                </View>
+                <View style={{flexDirection: 'row',alignSelf: 'center',justifyContent: 'space-between',marginTop:30}}>
+                   <CustomButton title="Confirmar agendamento" customWidth={300} />
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
