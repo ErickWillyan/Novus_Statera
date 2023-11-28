@@ -8,12 +8,11 @@ import CustomButton from "../../components/CustomButton";
 import { AuthContext } from "../../contexts/auth";
 
 export default function ScreenLogin() {
-  const [login, setLogin] = useState(true);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const { singIn } = useContext(AuthContext);
+  const { singIn, isAuthenticated, user } = useContext(AuthContext);
 
   async function handleSignIn() {
     if (email === "" || password === "") {
@@ -21,7 +20,12 @@ export default function ScreenLogin() {
       return;
     }
 
-    await singIn(email, password);
+    await singIn({email, password});
+
+    console.log(email)
+    console.log(password)
+    console.log(isAuthenticated)
+    console.log(user)
   }
 
   return (

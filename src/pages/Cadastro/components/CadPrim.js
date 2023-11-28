@@ -10,10 +10,9 @@ import { useRegisterUser } from "../context/register";
 
 export default function ScreenCadastroPrim() {
   const { handleNextStep } = useRegisterUser();
-  const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
+  const [name, setName] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [rg, setRg] = useState("");
-  const [datanasc, setDatanasc] = useState("");
 
   const navigation = useNavigation();
 
@@ -40,14 +39,14 @@ export default function ScreenCadastroPrim() {
       <View style={styles.inputs}>
         <CustomTextInput
           placeholderText={"Nome"}
-          valorInput={nome}
-          textChange={(text) => setNome(text)}
+          valorInput={name}
+          textChange={(text) => setName(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Sobrenome"}
-          valorInput={sobrenome}
-          textChange={(text) => setSobrenome(text)}
+          placeholderText={"Telefone"}
+          valorInput={telefone}
+          textChange={(text) => setTelefone(text)}
         />
 
         <CustomTextInput
@@ -56,15 +55,11 @@ export default function ScreenCadastroPrim() {
           textChange={(text) => setRg(text)}
         />
 
-        <CustomTextInput
-          placeholderText={"Data de nascimento"}
-          valorInput={datanasc}
-          textChange={(text) => setDatanasc(text)}
-        />
+        
         <View style={{ height: 58 }} />
         <CustomButton
           title={"Próximo"}
-          onPress={() => handleNextStep({ nome, sobrenome, rg, datanasc })}
+          onPress={() => handleNextStep({ name, telefone, rg})}
         />
       </View>
     </View>
