@@ -53,7 +53,12 @@ const ProfileScreenDoador = ({ onEditPress }) => {
         style={styles.editButton}
         onPress={onEditPress}
       >
-        <Icon name="edit" size={30} color="#028100" />
+        <Icon name="edit" size={40} color="#028100" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.exitButton}
+      >
+        <Icon name="exit-to-app" size={40} color="#028100" />
       </TouchableOpacity>
     </View>
   );
@@ -135,7 +140,15 @@ const styles = StyleSheet.create({
   editButton: {
     position: 'absolute',
     top: 10,
-    right: 10,
+    right: 50,
+    backgroundColor: 'transparent', // ou a cor desejada
+    borderRadius: 50,
+    padding: 10,
+  },
+  exitButton: {
+    position: 'absolute',
+    top: 10,
+    right: 5,
     backgroundColor: 'transparent', // ou a cor desejada
     borderRadius: 50,
     padding: 10,
