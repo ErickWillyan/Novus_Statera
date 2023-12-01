@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import CardColeta from "../../components/CardColeta";
 
 
 
@@ -12,7 +13,6 @@ export default function ScreenHome() {
         source={require("../../assets/img/background.png")}
         style={styles.backgroundImage}
       >
-        {/* Seu conteúdo aqui */}
       </ImageBackground>
     </View>
   );
