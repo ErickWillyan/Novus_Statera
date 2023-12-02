@@ -1,149 +1,100 @@
-import React from "react";
-import { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, Modal, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
 import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
 import ColetorInfo from "../../components/ColetorInfo";
-import { FontAwesome } from '@expo/vector-icons';
-import Calendario from "../../components/Calendario";
-import NumberSelector from "../../components/NumberSelector";
-import ManualTimePicker from "../../components/ManualTimePicker";
-import CustomDropDown from "../../components/CustomDropDown";
-import CustoButton from "../../components/CustomButton";
-import CustomButton from "../../components/CustomButton";
 
 export default function ScreenPerfilColetor({ route }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const dropdownOptions = [
-    { label: 'Local1', value: 'Local1' },
-    { label: 'Local2', value: 'Local2' },
-    { label: 'Local3', value: 'Local3' },
-  ];
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-  const handleDropdownChange = (value) => {
-    setSelectedOption(value);
-    console.log('Opção Selecionada:', value);
-  };
-
-  const handleTimeSelected = (time) => {
-    console.log('Tempo selecionado:', time);
-  };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../../assets/img/Juan.jpg")}
-        style={styles.profileImage}
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={{ right: '280%' }}>
-          <ReturnButton />
-        </TouchableOpacity>
-        <TouchableOpacity style={{ left: '260%' }} onPress={() => setModalOpen(true)}>
-          <FontAwesome name="calendar" size={30} color="white" />
-        </TouchableOpacity>
+    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+      <View style={styles.container}>
+        <Image
+          source={require("../../assets/img/Juan.jpg")}
+          style={styles.profileImage}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity>
+            <ReturnButton />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalOpen(true)}>
+            <FontAwesome name="calendar" size={30} color="white" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.infoContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.nome}>{`Nome`}</Text>
+            <Text style={styles.endereco}>{`Endereço`}</Text>
+          </View>
+          <TouchableOpacity style={styles.favoritoContainer}>
+            <Favorito />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.coletorInfoContainer}>
+          <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
+        </View>
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.nome}>{`Nome`}</Text>
-        <Text style={styles.endereco}>{`Endereço`}</Text>
-      </View>
-      <View style={styles.FavContainer}>
-        <Favorito />
-      </View>
-      <View style={{ top: 250 }}>
-        <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
-      </View>
-    </View>
+    </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modal: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 0,
-  },
-  modalContentContainer: {
+  scrollViewContainer: {
     flexGrow: 1,
   },
-  modalContent: {
+  container: {
     flex: 1,
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 20,
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  modalBody: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  modalSection: {
-    marginBottom: 10,
-  },
-  modalSectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   profileImage: {
     width: '101%',
     height: 410,
-    top: -2,
     borderWidth: 2,
-    borderColor: "white",
-    position: "absolute"
+    borderColor: 'white',
+    position: 'absolute',
+    top: 0,
   },
   buttonContainer: {
-    position: "absolute",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
+    position: 'absolute',
     top: 20,
-    flex: 1,
-    flexDirection: "row",
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
+    position: 'absolute',
+    top: 450,
   },
   textContainer: {
-    position: "absolute",
-    left: 5,
-    bottom: 200
+    width: '70%',
   },
-  FavContainer: {
-    position: "absolute",
-    bottom: 240,
-    right: 10
+  favoritoContainer: {
+    width: '30%',
+    alignItems: 'flex-end',
+    marginTop: -20,
+  },
+  coletorInfoContainer: {
+    position: 'absolute',
+    top: 580,
   },
   nome: {
-    color: "black",
-    fontSize: 50,
-    fontWeight: "bold",
+    color: 'black',
+    fontSize: 40,
+    fontWeight: 'bold',
   },
   endereco: {
-    color: "grey",
-    fontSize: 20,
-    fontWeight: "bold",
+    color: 'grey',
+    fontSize: 36,
+    fontWeight: 'bold',
   },
   card: {
-    bottom: "10",
+    bottom: 10,
   },
   section: {
     marginBottom: 10,
