@@ -1,23 +1,40 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import React, {useState, useEffect } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SplashScreen from "../components/SplashScreen";
 import Login from "../pages/login";
 import Cadastro from "../pages/Cadastro/ScreenCadastro";
 
 const Stack = createNativeStackNavigator();
 
 export default function AuthRoutes() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{
-          headerShown: false,
-        }}
-      />
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
 
-<Stack.Screen
+  useEffect(() => {
+    const splashTimeout = setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 2000); //2 segundos
+
+    return () => clearTimeout(splashTimeout);
+  }, []);
+
+  return (
+    <Stack.Navigator initialRouteName="Splash" headerMode="none">
+      {isSplashVisible ? (<Stack.Screen name="Splash" component={SplashScreen} options={{
+            headerShown: false,
+          }} /> ):
+      (
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            headerShown: false,
+          }}
+        />
+      )}
+      
+
+      <Stack.Screen
         name="Cadastro"
         component={Cadastro}
         options={{
@@ -25,7 +42,6 @@ export default function AuthRoutes() {
         }}
       />
     </Stack.Navigator>
-
-    
   );
 }
+
