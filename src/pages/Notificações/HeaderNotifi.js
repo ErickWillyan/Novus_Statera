@@ -3,8 +3,11 @@ import {View, Text, StyleSheet} from 'react-native';
 
 export default function HeaderNotifi() {
     return(
-        <View style ={styles.container}>
-            <Text style ={styles.texto}>Novus Statera</Text>
+        <View style={styles.container}>
+            <View style={styles.rowHeader}>
+                <Text style ={styles.texto}>Novus</Text>
+                <Text style ={[styles.texto, styles.texto2]}> Statera</Text>
+            </View>
         </View>
     );
 }
@@ -20,5 +23,11 @@ const styles = StyleSheet.create ({
         fontSize: 20,
         textTransform: 'uppercase',
         color: '#2E872E',
+    },
+    texto2:{
+        fontWeight: 800,
+    },
+    rowHeader:{
+        flexDirection:'row',
     },
 })

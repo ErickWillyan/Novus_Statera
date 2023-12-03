@@ -1,14 +1,26 @@
 import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 export default function ListItem(props) {
     return(
         <View style={styles.areaPessoa}>
-            <Text style={styles.textoNome}>{props.data.nome}</Text>
-            <Text style={styles.textoSolicitou}>Solicitou uma coleta</Text>
-            <Text style={styles.textoCidade}>{props.data.cidade}</Text>
-            <Text style={styles.textoInfo}>{props.data.data}</Text>
-            <Text style={styles.textoInfo}>{props.data.quantidade} Litros de óleo disponíveis</Text>
+            <View style={styles.areaRow}>
+                <Avatar
+                    size="large"
+                    rounded
+                    source={{
+                        uri: '../../assts/img/Logo.png',
+                    }}
+                />
+                <View style={styles.areaTextos}>
+                    <Text style={styles.textoNome}>{props.data.nome}</Text>
+                    <Text style={styles.textoSolicitou}>Solicitou uma coleta</Text>
+                    <Text style={styles.textoCidade}>{props.data.cidade}</Text>
+                    <Text style={styles.textoInfo}>{props.data.data}</Text>
+                    <Text style={styles.textoInfo}>{props.data.quantidade} Litros de óleo disponíveis</Text>
+                </View>
+            </View>
             <View style={styles.buttonsContainer}>
                 <TouchableOpacity style={[styles.botao, styles.buttonNegar]}>
                     <Text style={styles.textoBotao}>Negar</Text>
@@ -71,4 +83,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
     },  
+    areaRow: {
+        flexDirection: 'row',
+    },
+    areaTextos:{
+        marginLeft: 20,
+    },
 })
