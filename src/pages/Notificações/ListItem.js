@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ListItem(props) {
     return(
@@ -17,8 +18,14 @@ export default function ListItem(props) {
                     <Text style={styles.textoNome}>{props.data.nome}</Text>
                     <Text style={styles.textoSolicitou}>Solicitou uma coleta</Text>
                     <Text style={styles.textoCidade}>{props.data.cidade}</Text>
-                    <Text style={styles.textoInfo}>{props.data.data}</Text>
-                    <Text style={styles.textoInfo}>{props.data.quantidade} Litros de óleo disponíveis</Text>
+                    <View style={styles.iconContainer}>
+                        <View style={styles.circunferencia}></View>
+                        <Text style={styles.textoInfo}>{props.data.data}</Text>
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <Icon name="tint" size={20} color="#FF8108" />
+                        <Text style={styles.textoInfo}> {props.data.quantidade} Litros de óleo disponíveis</Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.buttonsContainer}>
@@ -88,5 +95,16 @@ const styles = StyleSheet.create({
     },
     areaTextos:{
         marginLeft: 20,
+    },
+    iconContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    circunferencia: {
+        width: 15,
+        height: 15,
+        borderRadius: 7.5,
+        backgroundColor: '#32CD32',
+        marginRight: 8,
     },
 })
