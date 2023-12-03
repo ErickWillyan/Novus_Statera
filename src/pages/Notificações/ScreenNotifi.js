@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
+import HeaderNotifi from './HeaderNotifi';
+import ListItem from './ListItem';
 
 export default function ScreenNotifi() {
 
@@ -14,12 +16,12 @@ export default function ScreenNotifi() {
 
     return(
      <View style={styles.container}>
-
+        <HeaderNotifi/>
         <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id} 
         data={feed}
-        renderItem={({ item }) => <Pessoa data={item}/>}
+        renderItem={({ item }) => <ListItem data={item}/>}
         />
 
      </View>
@@ -28,43 +30,6 @@ export default function ScreenNotifi() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-    },
-    areaPessoa: {
-        backgroundColor: '#ADADAD',
-        height: 158,
-        marginBottom: 3,
-    },
-    textoNome: {
-        color: '#0F0F0F',
-        fontSize: 20,
-        textTransform: 'uppercase',
-        fontWeight: '750',
-    },
-    textSolicitou:{
-        color: '#2E872E',
-        fontWeight: 650,
-    },
-    textoCidade: {
-        fontSize: 19,
-        color: '#0F0F0F',
-        fontWeight: 650,
-    },
-    textoInfo:{
-        color: '#3F3F3E',
-        fontSize: 15, 
-        fontWeight: 650,
-    },
+        flex: 1
+    }
 })
-
-function Pessoa(props){
-    return(
-        <View style={styles.areaPessoa}>
-            <Text style={styles.textoNome}>{props.data.nome}</Text>
-            <Text style={styles.textSolicitou}>Solicitou uma coleta</Text>
-            <Text style={styles.textoCidade}>{props.data.cidade}</Text>
-            <Text style={styles.textoInfo}>{props.data.data}</Text>
-            <Text style={styles.textoInfo}>{props.data.quantidade} Litros de óleo disponíveis</Text>
-        </View>
-    )
-}
