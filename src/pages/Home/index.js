@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React,{useState, useEffect, useContext} from "react";
 import {View,
   Text,
@@ -6,6 +7,11 @@ import {View,
   FlatList,} from "react-native";
 import CustomSearchBar from "../../components/CustomSearchbar";
 import CardColetor from "../../components/CardColetor";
+=======
+import React from "react";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import CardColeta from "../../components/CardColeta";
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
 
 import { AuthContext } from "../../contexts/auth";
 
@@ -31,6 +37,7 @@ export default function ScreenHome() {
 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <CustomSearchBar
         placeholder="Digite o nome do coletor"
         value={searchText}
@@ -46,6 +53,13 @@ export default function ScreenHome() {
           />
         )}
       />
+=======
+      <ImageBackground
+        source={require("../../assets/img/background.png")}
+        style={styles.backgroundImage}
+      >
+      </ImageBackground>
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
     </View>
   );
 }

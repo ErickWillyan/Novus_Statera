@@ -1,11 +1,13 @@
 // CardComponent.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-web';
 
 const ColetorInfo = ({coletas, avaliacao}) => {
   const star = '⭐';
 
   return (
+
     <View style={styles.card}>
       <View style={styles.container}>
         <View style={styles.leftContent}>
@@ -20,11 +22,12 @@ const ColetorInfo = ({coletas, avaliacao}) => {
         </View>
       </View>
     </View>
+
   );
 };
 
-const CARD_WIDTH = 300; 
-const CARD_HEIGHT = 85;
+const CARD_WIDTH = 350; 
+const CARD_HEIGHT = 110;
 
 const styles = StyleSheet.create({
   card: {
@@ -50,29 +53,29 @@ const styles = StyleSheet.create({
     left:12
   },
   title: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
     color:"#544747"
   },
   estrela: {
-    fontSize: 35,
+    fontSize: 45,
     bottom: 5
   },
   divider: {
     left:20,
     width: 1,
-    height: '100%',
+    height: '80%',
     backgroundColor: '#828181',
     marginHorizontal: 8,
   },
   coletas:{
-    fontSize:14,
+    fontSize: 16,
     color:'#008100',
     textDecorationLine:"underline",
   },
   avaliacao:{
     color:'#544747',
-    fontSize:15
+    fontSize:25
   }
 });
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import {
@@ -19,6 +20,14 @@ import ManualTimePicker from "../../components/ManualTimePicker";
 import CustomDropDown from "../../components/CustomDropDown";
 import CustomButton from "../../components/CustomButton";
 import { AuthContext } from "../../contexts/auth";
+=======
+import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
+import ReturnButton from "../../components/ReturnButton";
+import Favorito from "../../components/Favorito";
+import ColetorInfo from "../../components/ColetorInfo";
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
 
 import { api } from "../../libs/api";
 
@@ -29,6 +38,7 @@ export default function ScreenPerfilColetor() {
   const route = useRoute();
   const [coletor, setColetor] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
+<<<<<<< HEAD
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [date, setDate] = useState({});
@@ -234,10 +244,43 @@ export default function ScreenPerfilColetor() {
         <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
       </View>
     </View>
+=======
+
+  return (
+    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+      <View style={styles.container}>
+        <Image
+          source={require("../../assets/img/Juan.jpg")}
+          style={styles.profileImage}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity>
+            <ReturnButton />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalOpen(true)}>
+            <FontAwesome name="calendar" size={30} color="white" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.infoContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.nome}>{`Nome`}</Text>
+            <Text style={styles.endereco}>{`Endereço`}</Text>
+          </View>
+          <TouchableOpacity style={styles.favoritoContainer}>
+            <Favorito />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.coletorInfoContainer}>
+          <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
+        </View>
+      </View>
+    </ScrollView>
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   );
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container: {
     flex: 1,
     justifyContent: "center",
@@ -249,10 +292,14 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   modalContentContainer: {
+=======
+  scrollViewContainer: {
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
     flexGrow: 1,
   },
-  modalContent: {
+  container: {
     flex: 1,
+<<<<<<< HEAD
     backgroundColor: "#fff",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -279,22 +326,40 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
+=======
+    justifyContent: 'center',
+    alignItems: 'center',
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   },
   profileImage: {
     width: "101%",
     height: 410,
-    top: -2,
     borderWidth: 2,
+<<<<<<< HEAD
     borderColor: "white",
     position: "absolute",
+=======
+    borderColor: 'white',
+    position: 'absolute',
+    top: 0,
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   },
   buttonContainer: {
-    position: "absolute",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
+    position: 'absolute',
     top: 20,
-    flex: 1,
-    flexDirection: "row",
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
+    position: 'absolute',
+    top: 450,
   },
   textContainer: {
+<<<<<<< HEAD
     position: "absolute",
     left: 5,
     bottom: 200,
@@ -303,19 +368,31 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 240,
     right: 10,
+=======
+    width: '70%',
+  },
+  favoritoContainer: {
+    width: '30%',
+    alignItems: 'flex-end',
+    marginTop: -20,
+  },
+  coletorInfoContainer: {
+    position: 'absolute',
+    top: 580,
+>>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   },
   nome: {
-    color: "black",
-    fontSize: 50,
-    fontWeight: "bold",
+    color: 'black',
+    fontSize: 40,
+    fontWeight: 'bold',
   },
   endereco: {
-    color: "grey",
-    fontSize: 20,
-    fontWeight: "bold",
+    color: 'grey',
+    fontSize: 36,
+    fontWeight: 'bold',
   },
   card: {
-    bottom: "10",
+    bottom: 10,
   },
   section: {
     marginBottom: 10,
