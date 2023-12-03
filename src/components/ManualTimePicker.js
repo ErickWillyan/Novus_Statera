@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 
-const ManualTimePicker = () => {
+const ManualTimePicker = ({onTimeSelected}) => {
   const [enteredTime, setEnteredTime] = useState('');
   const [isValidFormat, setIsValidFormat] = useState(true);
   const [isTimeSaved, setIsTimeSaved] = useState(false);
@@ -25,7 +25,7 @@ const ManualTimePicker = () => {
       console.log('Tempo formatado:', formattedTime);
       // Define que o horário foi salvo com sucesso
       setIsTimeSaved(true);
-      // Se o formato for válido, você pode redefinir a validação de formato
+      onTimeSelected(enteredTime)
       setIsValidFormat(true);
     } else {
       console.log('Formato de tempo inválido. Preencha todos os espaços.');

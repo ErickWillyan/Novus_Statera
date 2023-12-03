@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 
-const NumberSelector = () => {
+const NumberSelector = ({onNumberPress}) => {
   const [number, setNumber] = useState(0);
 
   const incrementNumber = () => {
     const newNumber = number + 1;
     setNumber(newNumber);
-    console.log('Valor selecionado:', newNumber);
+    // console.log('Valor selecionado:', newNumber);
+    onNumberPress(newNumber)
   };
 
   const decrementNumber = () => {
@@ -16,6 +17,7 @@ const NumberSelector = () => {
       const newNumber = number - 1;
       setNumber(newNumber);
       console.log('Valor selecionado:', newNumber);
+      onNumberPress(newNumber)
     }
   };
 
