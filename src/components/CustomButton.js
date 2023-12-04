@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     color: "#008100", // Cor do texto
     fontSize: 20,
     fontStyle: "normal",
-    fontWeight: "400",
     lineHeight: 24,
     textAlign: "center",
   },

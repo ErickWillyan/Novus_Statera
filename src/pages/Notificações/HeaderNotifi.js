@@ -19,13 +19,11 @@ const styles = StyleSheet.create ({
         justifyContent: 'center',
     },
     texto:{ 
-        fontWeight: 650,
         fontSize: 20,
         textTransform: 'uppercase',
         color: '#2E872E',
     },
     texto2:{
-        fontWeight: 800,
     },
     rowHeader:{
         flexDirection:'row',

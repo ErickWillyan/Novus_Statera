@@ -50,21 +50,17 @@ const styles = StyleSheet.create({
         color: '#0F0F0F',
         fontSize: 20,
         textTransform: 'uppercase',
-        fontWeight: '750',
     },
     textoSolicitou:{
         color: '#2E872E',
-        fontWeight: 650,
     },
     textoCidade: {
         color: '#0F0F0F',
         fontSize: 19,
-        fontWeight: 650,
     },
     textoInfo:{
         color: '#3F3F3E',
         fontSize: 15, 
-        fontWeight: 650,
     },
     buttonsContainer: {
         flexDirection: 'row',

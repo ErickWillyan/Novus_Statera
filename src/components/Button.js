@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     color: "#FFFF", // Cor do texto
     fontSize: 35,
     fontStyle: "normal",
-    fontWeight: "400",
     lineHeight: 24,
     textAlign: "center",
     fontFamily: "inter",
