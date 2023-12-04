@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+
 import React, { useState, createContext, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-=======
-import React, { useState, useContext, createContext } from "react";
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

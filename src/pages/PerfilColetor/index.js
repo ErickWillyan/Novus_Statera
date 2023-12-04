@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import {
@@ -11,6 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 import ReturnButton from "../../components/ReturnButton";
 import Favorito from "../../components/Favorito";
 import ColetorInfo from "../../components/ColetorInfo";
@@ -20,14 +20,6 @@ import ManualTimePicker from "../../components/ManualTimePicker";
 import CustomDropDown from "../../components/CustomDropDown";
 import CustomButton from "../../components/CustomButton";
 import { AuthContext } from "../../contexts/auth";
-=======
-import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
-import { FontAwesome } from '@expo/vector-icons';
-import ReturnButton from "../../components/ReturnButton";
-import Favorito from "../../components/Favorito";
-import ColetorInfo from "../../components/ColetorInfo";
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
 
 import { api } from "../../libs/api";
 
@@ -38,7 +30,6 @@ export default function ScreenPerfilColetor() {
   const route = useRoute();
   const [coletor, setColetor] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
-<<<<<<< HEAD
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [date, setDate] = useState({});
@@ -153,109 +144,83 @@ export default function ScreenPerfilColetor() {
   };
 
   const handleOnPress = () => {
-    
-    RegisterColeta().then(() =>{
-      console.log("Coleta cadastrada")
-    })
+    RegisterColeta().then(() => {
+      console.log("Coleta cadastrada");
+    });
   };
 
-  return (
-    <View style={styles.container}>
-      <Modal style={styles.modal} visible={modalOpen} animationType="slide">
-        <View style={styles.modalContent}>
-          <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <View style={styles.header}>
-              <ReturnButton onPress={closeModal} />
-              <Text style={styles.modalTitle}>Agendar Coleta</Text>
-            </View>
-            <View style={styles.body}>
-              <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Selecione um dia</Text>
-                <Calendario onDatePress={handleSelectedDate} />
-              </View>
-              <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Quantidade de óleo</Text>
-                <NumberSelector onNumberPress={handleSelectedQntoleo} />
-              </View>
-              <View style={styles.section}>
-                <Text style={styles.sectionTitle}>
-                  Adicionar Horário de coleta
-                </Text>
-                <ManualTimePicker onTimeSelected={handleTimeSelected} />
-              </View>
-              <View style={styles.section}>
-                <View style={styles.sectionContent}>
-                  <Text style={styles.sectionTitle}>Local da coleta</Text>
-                </View>
-                <View style={styles.sectionContent}>
-                  <CustomDropDown
-                    options={dropdownOptions}
-                    onChange={handleDropdownChange}
-                  />
-                  <CustomButton
-                    title="+"
-                    customWidth={40}
-                    onPress={HandleLocal}
-                  />
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignSelf: "center",
-                    justifyContent: "space-between",
-                    marginTop: 30,
-                  }}
-                >
-                  <CustomButton
-                    title="Confirmar agendamento"
-                    customWidth={300}
-                    onPress={handleOnPress}
-                  />
-                </View>
-              </View>
-            </View>
-          </ScrollView>
-        </View>
-      </Modal>
-      {/* Tela perfil */}
-      <Image
-        source={require("../../assets/img/Juan.jpg")}
-        style={styles.profileImage}
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={{ right: "250%" }}>
-          <ReturnButton />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{ left: "250%" }}
-          onPress={() => setModalOpen(true)}
-        >
-          <Text>Agendar</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.nome}>{coletor.name}</Text>
-        <Text style={styles.endereco}>{coletor.telefone}</Text>
-      </View>
-      <View style={styles.FavContainer}>
-        <Favorito />
-      </View>
-      <View style={{ top: 250 }}>
-        <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
-      </View>
-    </View>
-=======
+  const handleOnPressReturnButton = () => {
+    navigation.navigate("TabBar");
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       <View style={styles.container}>
-        <Image
-          source={require("../../assets/img/Juan.jpg")}
-          style={styles.profileImage}
-        />
+        <Modal style={styles.modal} visible={modalOpen} animationType="slide">
+          <View style={styles.modalContent}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+              <View style={styles.header}>
+                <ReturnButton onPress={closeModal} />
+                <Text style={styles.modalTitle}>Agendar Coleta</Text>
+              </View>
+              <View style={styles.body}>
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Selecione um dia</Text>
+                  <Calendario onDatePress={handleSelectedDate} />
+                </View>
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Quantidade de óleo</Text>
+                  <NumberSelector onNumberPress={handleSelectedQntoleo} />
+                </View>
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>
+                    Adicionar Horário de coleta
+                  </Text>
+                  <ManualTimePicker onTimeSelected={handleTimeSelected} />
+                </View>
+                <View style={styles.section}>
+                  <View style={styles.sectionContent}>
+                    <Text style={styles.sectionTitle}>Local da coleta</Text>
+                  </View>
+                  <View style={styles.sectionContent}>
+                    <CustomDropDown
+                      options={dropdownOptions}
+                      onChange={handleDropdownChange}
+                    />
+                    <CustomButton
+                      title="+"
+                      customWidth={40}
+                      onPress={HandleLocal}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignSelf: "center",
+                      justifyContent: "space-between",
+                      marginTop: 30,
+                    }}
+                  >
+                    <CustomButton
+                      title="Confirmar agendamento"
+                      customWidth={300}
+                      onPress={handleOnPress}
+                    />
+                  </View>
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+        </Modal>
+        {/* Tela perfil */}
+       
+          <Image
+            source={require("../../assets/img/Juan.jpg")}
+            style={styles.profileImage}
+          />
         <View style={styles.buttonContainer}>
           <TouchableOpacity>
-            <ReturnButton />
+            <ReturnButton onPress={handleOnPressReturnButton} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setModalOpen(true)}>
             <FontAwesome name="calendar" size={30} color="white" />
@@ -263,133 +228,76 @@ export default function ScreenPerfilColetor() {
         </View>
         <View style={styles.infoContainer}>
           <View style={styles.textContainer}>
-            <Text style={styles.nome}>{`Nome`}</Text>
-            <Text style={styles.endereco}>{`Endereço`}</Text>
+            <Text style={styles.nome}>{coletor.name}</Text>
+            <Text style={styles.endereco}>{coletor.bairro}</Text>
           </View>
-          <TouchableOpacity style={styles.favoritoContainer}>
+          {/* <TouchableOpacity style={styles.favoritoContainer}>
             <Favorito />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.coletorInfoContainer}>
           <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />
         </View>
       </View>
     </ScrollView>
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   );
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
+
+  
+
+  scrollViewContainer: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  modal: {
-    flex: 1,
-    justifyContent: "flex-end",
-    marginBottom: 0,
-  },
-  modalContentContainer: {
-=======
-  scrollViewContainer: {
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
-    flexGrow: 1,
-  },
-  container: {
-    flex: 1,
-<<<<<<< HEAD
-    backgroundColor: "#fff",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 20,
-  },
-  modalHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  modalBody: {
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  modalSection: {
-    marginBottom: 10,
-  },
-  modalSectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-=======
-    justifyContent: 'center',
-    alignItems: 'center',
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
-  },
   profileImage: {
-    width: "101%",
-    height: 410,
-    borderWidth: 2,
-<<<<<<< HEAD
+    width: "100%",
+    height: "50%",
     borderColor: "white",
     position: "absolute",
-=======
-    borderColor: 'white',
-    position: 'absolute',
     top: 0,
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
+    resizeMode: "stretch"
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-    position: 'absolute',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    position: "absolute",
     top: 20,
   },
   infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-    position: 'absolute',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    position: "absolute",
     top: 450,
   },
   textContainer: {
-<<<<<<< HEAD
-    position: "absolute",
-    left: 5,
-    bottom: 200,
-  },
-  FavContainer: {
-    position: "absolute",
-    bottom: 240,
-    right: 10,
-=======
-    width: '70%',
+    width: "70%",
   },
   favoritoContainer: {
-    width: '30%',
-    alignItems: 'flex-end',
+    width: "30%",
+    alignItems: "flex-end",
     marginTop: -20,
   },
   coletorInfoContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 580,
->>>>>>> 8405de37494f9f0a4ea03dca4c9140fbba7869af
   },
   nome: {
-    color: 'black',
+    color: "black",
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   endereco: {
-    color: 'grey',
+    color: "grey",
     fontSize: 36,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   card: {
     bottom: 10,

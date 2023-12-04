@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
   card: {
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
+    borderWidth: 2,
+    borderColor: "#008100",
     borderRadius: 25,
-    backgroundColor: '#B2AFAF',
     padding: 16,
   },
   container: {
@@ -63,18 +64,17 @@ const styles = StyleSheet.create({
   },
   divider: {
     left:20,
-    width: 1,
-    height: '80%',
-    backgroundColor: '#828181',
+    width: 2,
+    height: '90%',
+    backgroundColor: '#008100',
     marginHorizontal: 8,
   },
   coletas:{
     fontSize: 16,
     color:'#008100',
-    textDecorationLine:"underline",
   },
   avaliacao:{
-    color:'#544747',
+    color:'#008100',
     fontSize:25
   }
 });
