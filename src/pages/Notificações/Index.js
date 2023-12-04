@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
-import HeaderNotifi from './HeaderNotifi';
-import ListItem from './ListItem';
+import HeaderNotifi from '../../components/Header';
+import ListItem from '../../components/ListItem';
 
 export default function ScreenNotifi() {
 

@@ -7,7 +7,8 @@ import ScreenChat from "../pages/chat";
 import ScreenHome from "../pages/Home";
 import ScreenPerfil from "../pages/perfil";
 import ScreenLogin from "../pages/login";
-import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
+import ScreenNotifi from "../pages/Notificações/Index";
+import Comprovante from "../pages/Comprovante/Index";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Historico_Coleta"
-        component={ScreenHistorico}
+        component={ScreenNotifi}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -63,7 +64,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenNotifi}
+        component={Comprovante}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

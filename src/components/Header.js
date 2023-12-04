@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export default function HeaderNotifi() {
+export default function Header() {
     return(
         <View style={styles.container}>
             <View style={styles.rowHeader}>
@@ -17,6 +17,7 @@ const styles = StyleSheet.create ({
         height: 70,
         width: '100%',
         justifyContent: 'center',
+        backgroundColor: '#FFF',
     },
     texto:{ 
         fontWeight: 650,

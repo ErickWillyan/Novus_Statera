@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         fontWeight: '750',
     },
     textoSolicitou:{
-        color: '#2E872E',
+        color: '#2E872E',   
         fontWeight: 650,
     },
     textoCidade: {
