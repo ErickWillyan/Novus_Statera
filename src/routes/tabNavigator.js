@@ -66,7 +66,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenHome}
+        component={SwichButtons}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
