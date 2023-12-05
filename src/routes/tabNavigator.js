@@ -9,6 +9,7 @@ import ScreenPerfil from "../pages/perfil";
 import ScreenLogin from "../pages/login";
 import ScreenNotifi from "../pages/Notificações/Index";
 import Comprovante from "../pages/Comprovante/Index";
+import SwichButtons from "../components/SwitchButtons";
 
 
 const Tab = createBottomTabNavigator();
