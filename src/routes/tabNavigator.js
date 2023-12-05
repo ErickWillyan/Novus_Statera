@@ -9,6 +9,7 @@ import ScreenPerfil from "../pages/perfil";
 import ScreenLogin from "../pages/login";
 import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
 
+
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
@@ -35,7 +36,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenFavoritos}
+        component={ScreenNotifi}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -63,7 +64,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenNotifi}
+        component={ScreenHome}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

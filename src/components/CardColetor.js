@@ -10,7 +10,7 @@ const CardColetor = ({data}) => {
   const navigation = useNavigation();
 
   function HandleNavigation(){
-      navigation.navigate("Teste", {userId: data.id})
+      navigation.navigate("PerfilColetor", {coletorId: data.id})
 
   }
 

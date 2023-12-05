@@ -1,7 +1,8 @@
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigator from "./tabNavigator";
-import Teste from "./../pages/Teste"
+import PerfilColetor from "./../pages/PerfilColetor";
+import RegisterLocal from "./../pages/PontoColeta"
 
 const Stack = createStackNavigator();
 
@@ -16,15 +17,21 @@ export default function MainRoutes() {
         }}
       />
 
-  <Stack.Screen
-        name="Teste"
-        component={Teste}
+      <Stack.Screen
+        name="PerfilColetor"
+        component={PerfilColetor}
         options={{
           headerShown: false,
         }}
       />
 
-      
+      <Stack.Screen
+        name="RegisterLocal"
+        component={RegisterLocal}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }

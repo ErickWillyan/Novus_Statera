@@ -7,24 +7,67 @@ export const RegisterUserProvider = ({ children }) => {
   const [dataState, setData] = useState();
   const [step, setStep] = useState(1);
 
-  const handleSubmit = async (data) => {
-    try {
-      await api.post("/users", data);
+  function ExibirUser() {
+    console.log(user);
+  }
 
-      console.log(data);
-    } catch (error) {
-      console.error("Erro na chamada de API:", error.message);
-      // Trate o erro de acordo com suas necessidades
+  const RegisterColetor = async (dados) => {
+    const Response = await api.post("/RegisterColetor", dados);
+
+    const { id } = Response.data;
+
+    const coletorId = { coletorId: id };
+
+    console.log(id);
+
+    console.log({
+      ...coletorId,
+      ...dados,
+    });
+
+    RegisterUser({
+      ...dados,
+      ...coletorId,
+    });
+  };
+
+  const RegisterDoador = async (dados) => {
+    const Response = await api.post("/RegisterDoador", dados);
+
+    const { id } = Response.data;
+
+    const doadorId = { doadorId: id };
+
+    console.log(id);
+
+    console.log({
+      ...doadorId,
+      ...dados,
+    });
+
+    RegisterUser({
+      ...dados,
+      ...doadorId,
+    });
+  };
+
+  const RegisterUser = async (data) => {
+    await api.post("/RegisterUser", data);
+  };
+
+  const handleSubmit = async (data) => {
+    const typeUser = data.type;
+
+    if (typeUser === "coletor") {
+      RegisterColetor(data);
+    } else {
+      RegisterDoador(data);
     }
   };
 
   const handleNextStep = (data) => {
-    if (step === 2) {
-      console.log(step);
-      handleSubmit({
-        ...dataState,
-        ...data,
-      });
+    if (step === 3) {
+      handleSubmit({ ...dataState, ...data });
       return;
     }
 
@@ -35,14 +78,15 @@ export const RegisterUserProvider = ({ children }) => {
       };
     });
 
-    if (step === 1) {
-      console.log(step);
-    }
-
     setStep((prevStep) => prevStep + 1);
   };
+
   const handleBackStep = () => {
-    setStep(1);
+    if (step === 3) {
+      setStep(2);
+    } else if (step === 2) {
+      setStep(1);
+    }
   };
 
   return (

@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
+import React,{useState, useEffect, useContext} from "react";
+import {View,
   Text,
   StyleSheet,
   ImageBackground,
-  FlatList,
-} from "react-native";
+  FlatList,} from "react-native";
 import CustomSearchBar from "../../components/CustomSearchbar";
 import CardColetor from "../../components/CardColetor";
+
+
+import { AuthContext } from "../../contexts/auth";
 
 import { api } from "../../libs/api";
 
 export default function ScreenHome() {
   const [coletores, setColetores] = useState([]);
-  // { nome: "erick", endereco: "tanto faz" },
-  // { nome: "erick", endereco: "tanto faz" },
-  // { nome: "erick", endereco: "tanto faz" },
-  // { nome: "erick", endereco: "tanto faz" },
-  // { nome: "erick", endereco: "tanto faz" },
-
   const [searchText, setSearchText] = useState("");
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     async function listar() {
@@ -30,6 +26,7 @@ export default function ScreenHome() {
       setColetores(response.data);
     }
 
+    console.log(user)
     listar();
   }, []);
 
@@ -50,6 +47,7 @@ export default function ScreenHome() {
           />
         )}
       />
+
     </View>
   );
 }
