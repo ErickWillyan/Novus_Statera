@@ -1,12 +1,13 @@
-import React,{useState, useEffect, useContext} from "react";
-import {View,
+import React, { useState, useEffect, useContext } from "react";
+import {
+  View,
   Text,
   StyleSheet,
   ImageBackground,
-  FlatList,} from "react-native";
+  FlatList,
+} from "react-native";
 import CustomSearchBar from "../../components/CustomSearchbar";
 import CardColetor from "../../components/CardColetor";
-
 
 import { AuthContext } from "../../contexts/auth";
 
@@ -15,7 +16,7 @@ import { api } from "../../libs/api";
 export default function ScreenHome() {
   const [coletores, setColetores] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     async function listar() {
@@ -26,7 +27,7 @@ export default function ScreenHome() {
       setColetores(response.data);
     }
 
-    console.log(user)
+    console.log(user);
     listar();
   }, []);
 
@@ -40,14 +41,10 @@ export default function ScreenHome() {
       <FlatList
         data={coletores}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => (
-          <CardColetor
-            style={styles.card}
-            data={item}
-          />
+        renderItem={({ item }) => (
+          <CardColetor style={styles.card} data={item} />
         )}
       />
-
     </View>
   );
 }
