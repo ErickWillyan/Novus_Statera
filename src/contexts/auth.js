@@ -11,6 +11,7 @@ export const AuthContext = createContext({});
 export default function AuthProvider({ children }) {
   const navigation = useNavigation();
   const [user, setUser] = useState({
+
     id: "",
     name: "",
     email: "",

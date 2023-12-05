@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
   },
   nomeText: {
     fontSize: 16,
-    fontWeight: "600",
     color: "#000000", // Cor preta
   },
   enderecoText: {
