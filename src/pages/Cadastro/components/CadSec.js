@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
@@ -9,8 +8,7 @@ import { useRegisterUser } from "../context/register";
 
 export default function ScreenCadastroSec() {
   const { handleNextStep, handleBackStep } = useRegisterUser();
-  const [cep, setCep] = useState("");
-  const [endereco, setEndereco] = useState("");
+  const [rua, setRua] = useState("");
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
 
@@ -28,25 +26,19 @@ export default function ScreenCadastroSec() {
       </View>
       <View style={styles.inputs}>
         <CustomTextInput
-          placeholderText={"CEP"}
-          valorInput={cep}
-          textChange={(text) => setCep(text)}
+          placeholderText={"Informe sua rua"}
+          valorInput={rua}
+          textChange={(text) => setRua(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Endereço"}
-          valorInput={endereco}
-          textChange={(text) => setEndereco(text)}
-        />
-
-        <CustomTextInput
-          placeholderText={"Bairro"}
+          placeholderText={"Informe sua bairro"}
           valorInput={bairro}
           textChange={(text) => setBairro(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Cidade"}
+          placeholderText={"Informe sua cidade"}
           valorInput={cidade}
           textChange={(text) => setCidade(text)}
         />
@@ -54,7 +46,7 @@ export default function ScreenCadastroSec() {
         <View style={{ height: 58 }} />
         <CustomButton
           title={"Próximo"}
-          onPress={() => handleNextStep({ cep, bairro, endereco, cidade })}
+          onPress={() => handleNextStep({bairro, rua, cidade })}
         />
       </View>
     </View>

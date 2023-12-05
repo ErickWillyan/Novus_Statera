@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { api } from "../../../libs/api";
 
 const RegisterUserContext = createContext({});
 
@@ -6,27 +7,80 @@ export const RegisterUserProvider = ({ children }) => {
   const [dataState, setData] = useState();
   const [step, setStep] = useState(1);
 
-  const handleSubmit = (data) => {
-    // fazer função de inser aqui dentro
-    // o parametro "data" contém todos os dados do usuário
-    //
-    //
-    console.log(data)
+  function ExibirUser() {
+    console.log(user);
+  }
+
+  const RegisterColetor = async (dados) => {
+    const Response = await api.post("/RegisterColetor", dados);
+
+    const { id } = Response.data;
+
+    const coletorId = { coletorId: id };
+
+    console.log(id);
+
+    console.log({
+      ...coletorId,
+      ...dados,
+    });
+
+    RegisterUser({
+      ...dados,
+      ...coletorId,
+    });
+  };
+
+  const RegisterDoador = async (dados) => {
+    const Response = await api.post("/RegisterDoador", dados);
+
+    const { id } = Response.data;
+
+    const doadorId = { doadorId: id };
+
+    console.log(id);
+
+    console.log({
+      ...doadorId,
+      ...dados,
+    });
+
+    RegisterUser({
+      ...dados,
+      ...doadorId,
+    });
+  };
+
+  const RegisterUser = async (data) => {
+    await api.post("/RegisterUser", data);
+  };
+
+  const handleSubmit = async (data) => {
+    const typeUser = data.type;
+
+    if (typeUser === "coletor") {
+      RegisterColetor(data);
+    } else {
+      RegisterDoador(data);
+    }
   };
 
   const handleNextStep = (data) => {
+    if (step === 3) {
+      handleSubmit({ ...dataState, ...data });
+      return;
+    }
+
     setData((prevData) => {
       return {
         ...prevData,
         ...data,
       };
     });
-    if (step === 3) {
-      handleSubmit(dataState);
-      return;
-    }
+
     setStep((prevStep) => prevStep + 1);
   };
+
   const handleBackStep = () => {
     if (step === 3) {
       setStep(2);

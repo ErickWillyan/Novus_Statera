@@ -9,6 +9,8 @@ import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
 import ProfileScreen from "../pages/perfil/ProfileScreen"
+import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +38,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenFavoritos}
+        component={ScreenNotifi}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

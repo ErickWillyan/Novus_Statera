@@ -7,13 +7,19 @@ import CustomButton from "../../../components/CustomButton";
 import RadioButton from "../../../components/RadioButton";
 import CustomCheckbox from "../../../components/CustomCheckbox";
 import { useRegisterUser } from "../context/register";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ScreenCadastroTerc() {
+export default function ScreenCadastroSec() {
+  const navigation = useNavigation();
   const { handleNextStep, handleBackStep } = useRegisterUser();
   const [email, setEmail] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [senha, setSenha] = useState("");
+  const [type, setType] = useState("");
+  const [password, setPassword] = useState("");
   const [repetSenha, setRepetSenha] = useState("");
+
+  const handleSelecao = (opcao) => {
+    setType(opcao);
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
@@ -34,16 +40,11 @@ export default function ScreenCadastroTerc() {
           textChange={(text) => setEmail(text)}
         />
 
-        <CustomTextInput
-          placeholderText={"Telefone"}
-          valorInput={telefone}
-          textChange={(text) => setTelefone(text)}
-        />
 
         <CustomTextInput
           placeholderText={"Senha"}
-          valorInput={senha}
-          textChange={(text) => setSenha(text)}
+          valorInput={password}
+          textChange={(text) => setPassword(text)}
         />
 
         <CustomTextInput
@@ -52,19 +53,20 @@ export default function ScreenCadastroTerc() {
           textChange={(text) => setRepetSenha(text)}
         />
         <View style={{ top: 15, alignItems: "center" }}>
-          <RadioButton options={["Coletor", "Doador"]} />
-          <View style={{ flexDirection: "row", alignItems: "center", top: 10 }}>
+          <RadioButton options={["coletor", "doador"]} onSelect={handleSelecao}/>
+          {/* <View style={{ flexDirection: "row", alignItems: "center", top: 10 }}>
             <CustomCheckbox id="termos" />
             <Text style={{ marginLeft: -35, marginRight: 1 }}>
               Eu li e concordo com os
             </Text>
             <LinkText placeholder={"Termos de uso"} />
-          </View>
+          </View> */}
         </View>
         <View style={{ height: 58 }} />
         <CustomButton
           title={"Cadastrar"}
-          onPress={() => handleNextStep({ email, telefone, senha })}
+          onPress={() => handleNextStep({ email, password, type }, navigation.navigate("Login"))}
+         
         />
       </View>
     </View>
