@@ -38,19 +38,19 @@ export default function ScreenCadastroPrim() {
       </View>
       <View style={styles.inputs}>
         <CustomTextInput
-          placeholderText={"Nome"}
+          placeholderText={"Digite seu nome"}
           valorInput={name}
           textChange={(text) => setName(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Telefone"}
+          placeholderText={"Informe seu telefone"}
           valorInput={telefone}
           textChange={(text) => setTelefone(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Registro Geral"}
+          placeholderText={"Informe seu RG"}
           valorInput={rg}
           textChange={(text) => setRg(text)}
         />

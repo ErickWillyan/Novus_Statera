@@ -10,7 +10,7 @@ const CardColetor = ({data}) => {
   const navigation = useNavigation();
 
   function HandleNavigation(){
-      navigation.navigate("Teste", {userId: data.id})
+      navigation.navigate("PerfilColetor", {coletorId: data.id})
 
   }
 
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
   },
   nomeText: {
     fontSize: 16,
-    fontWeight: "600",
     color: "#000000", // Cor preta
   },
   enderecoText: {

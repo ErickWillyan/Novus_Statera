@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone de coração
 
-const btn_fav = () => {
-  const [heartColor, setHeartColor] = useState('red'); // Estado para controlar a cor do ícone
+const Favorito = () => {
+  const [heartColor, setHeartColor] = useState('white'); // Estado para controlar a cor do ícone
 
   // Função para lidar com o clique no botão de coração
   const handleHeartClick = () => {
     if (heartColor === 'red') {
-      setHeartColor('gray');
+      setHeartColor('white');
     } else {
       setHeartColor('red');
     }
@@ -18,7 +18,7 @@ const btn_fav = () => {
     <View style={styles.container}>
       <View style={styles.circle}>
         <TouchableOpacity style={styles.button} onPress={handleHeartClick}>
-          <Icon name="heart" size={65} color={heartColor} style={styles.heartIcon} />
+          <Icon name="heart" size={64} color={heartColor} style={styles.heartIcon} />
         </TouchableOpacity>
       </View>
     </View>
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
 
   },
   button: {
-    backgroundColor: 'transparent', // Cor de fundo transparente para o botão de coração
+    backgroundColor: 'transparent', 
+    alignContent: 'center'
   },
   heartIcon: {
     width: 64, // Largura do ícone de coração
@@ -52,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default btn_fav;
+export default Favorito;
