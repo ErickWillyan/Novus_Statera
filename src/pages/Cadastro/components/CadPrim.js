@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    
   },
   perfil: {
     width: 280,
@@ -86,12 +87,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    bottom:"17%",
   },
   inputs: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 70,
-    marginTop: 50,
+    bottom: 100,
+    marginBottom: "-20%"
   },
 });
