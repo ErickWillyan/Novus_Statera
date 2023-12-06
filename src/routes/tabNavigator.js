@@ -8,7 +8,8 @@ import ScreenHome from "../pages/Home";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
-import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
+import ScreenNotifi from "../pages/notificacoes/Index";
+import { AuthContext } from "../contexts/auth";
 
 
 const Tab = createBottomTabNavigator();

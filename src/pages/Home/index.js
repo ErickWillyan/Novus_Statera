@@ -3,10 +3,8 @@ import { View, Text, StyleSheet, ImageBackground, FlatList, } from "react-native
 import CustomSearchBar from "../../components/CustomSearchbar";
 import CardColetor from "../../components/CardColetor";
 import { AuthContext } from "../../contexts/auth";
-import ColetorInfo from "../../components/ColetorInfo";
-
 import { api } from "../../libs/api";
-import { Card } from "react-native-elements";
+
 
 
 export default function ScreenHome() {
