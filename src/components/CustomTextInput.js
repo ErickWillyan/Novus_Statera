@@ -3,7 +3,7 @@ import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInputMask } from "react-native-masked-text";
 
-const CustomTextInput = ({ placeholderText, valorInput, textChange, isPassword, showPasswordButton, isRgMasked }) => {
+const CustomTextInput = ({ placeholderText, valorInput, textChange, isPassword, showPasswordButton, isRgMasked, isPhoneMasked }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -25,6 +25,20 @@ const CustomTextInput = ({ placeholderText, valorInput, textChange, isPassword, 
             placeholder={placeholderText}
             placeholderTextColor="#008100"
             secureTextEntry={!showPassword && isPassword}
+          />
+        ) : isPhoneMasked ? (
+          <TextInputMask
+            style={styles.input}
+            type={"cel-phone"}
+            options={{
+              maskType: "BRL",
+              withDDD: true,
+              dddMask: "(99) ",
+            }}
+            value={valorInput}
+            onChangeText={textChange}
+            placeholder={placeholderText}
+            placeholderTextColor="#008100"
           />
         ) : (
           <TextInput
