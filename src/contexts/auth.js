@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState({
 
     id: "",
-    name: "w",
+    name: "",
     email: "",
     rg: "",
     telefone: "",

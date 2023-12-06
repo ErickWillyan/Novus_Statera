@@ -8,8 +8,9 @@ import ScreenHome from "../pages/Home";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
-import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
 import ScreenAgendarColeta from "../pages/AgendarColeta";
+import ScreenNotifi from "../pages/notificacoes/Index";
+import Comprovante from "../pages/Comprovante/Index";
 
 
 const Tab = createBottomTabNavigator();
@@ -52,7 +53,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Historico_Coleta"
-        component={ScreenHistorico}
+        component={ScreenNotifi}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

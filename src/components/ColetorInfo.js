@@ -26,13 +26,12 @@ const ColetorInfo = ({coletas, avaliacao}) => {
   );
 };
 
-const CARD_WIDTH = 350; 
-const CARD_HEIGHT = 110;
+
 
 const styles = StyleSheet.create({
   card: {
-    height: CARD_HEIGHT,
-    width: CARD_WIDTH,
+    height: 350,
+    width: 110,
     borderWidth: 2,
     borderColor: "#008100",
     borderRadius: 25,
