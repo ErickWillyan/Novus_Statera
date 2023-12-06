@@ -7,7 +7,6 @@ import NumberSelector from "../../components/NumberSelector";
 import ManualTimePicker from "../../components/ManualTimePicker";
 import CustomDropDown from "../../components/CustomDropDown";
 import CustomButton from "../../components/CustomButton";
-import { theme } from "../../assets/styles/theme";
 
 export default function ScreenAgendarColeta() {
     
@@ -105,7 +104,6 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily: theme.fontFamily,
   },
   modalBody: {
     flex: 1,
@@ -118,7 +116,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    fontFamily: theme.fontFamily,
   },
   profileImage: {
     width: '101%',
@@ -169,6 +166,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    fontFamily: theme.fontFamily,
   },
 });
