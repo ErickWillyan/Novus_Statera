@@ -9,6 +9,7 @@ import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
 import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
+import ScreenAgendarColeta from "../pages/AgendarColeta";
 
 
 const Tab = createBottomTabNavigator();
@@ -65,7 +66,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenHome}
+        component={ScreenAgendarColeta}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-elements";
 import ReturnButton from "../../components/ReturnButton";
-import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../contexts/auth";
@@ -66,7 +65,9 @@ const ProfileScreenDoadorEdit = () => {
 
       </View>
       <View style={styles.buttonView}>
-        <CustomButton title={"Confirmar"} onPress={""} />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Confirmar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -82,7 +83,8 @@ const styles = StyleSheet.create({
   },
   editText:{
     fontSize: 20,
-    color: "#008100",
+    color: "#FF8108",
+    borderBottomWidth: 0.5,
   },
 
   nameContainer: {
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     textAlign: "center",
+    color: '#121212',
   },
 
   TextInputItem: {
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
-    borderColor: "#008100",
+    borderColor: "#FF8108",
     fontSize: 18,
     fontStyle: "normal",
     fontWeight: "400",  
@@ -196,7 +199,23 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   buttonView: {
-    marginTop: 20,
+    marginTop: 40,
+  },
+  button: {
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#FF8108",
+    backgroundColor: "#F2F2F2",
+    padding: 10,
+    width: 280,
+    height: 52,
+  },
+  buttonText: {
+    color: "#FF8108",
+    fontSize: 20,
+    fontStyle: "normal",
+    lineHeight: 24,
+    textAlign: "center",
   },
 });
 export default ProfileScreenDoadorEdit;
