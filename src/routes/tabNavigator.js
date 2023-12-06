@@ -39,7 +39,7 @@ export default function Routes() {
     >
       <Tab.Screen
         name="Favoritos"
-        component={ScreenNotifi}
+        component={ScreenFavoritos}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;
@@ -67,7 +67,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={ScreenAgendarColeta}
+        component={ScreenHome}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

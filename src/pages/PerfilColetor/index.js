@@ -147,7 +147,6 @@ export default function ScreenPerfilColetor() {
     RegisterColeta().then(() => {
       console.log("Coleta cadastrada");
     });
-    setModalOpen(false)
   };
 
   const handleOnPressReturnButton = () => {
@@ -232,9 +231,6 @@ export default function ScreenPerfilColetor() {
             <Text style={styles.nome}>{coletor.name}</Text>
             <Text style={styles.endereco}>{coletor.bairro}</Text>
           </View>
-          {/* <TouchableOpacity style={styles.favoritoContainer}>
-            <Favorito />
-          </TouchableOpacity> */}
         </View>
         <View style={styles.coletorInfoContainer}>
           <ColetorInfo style={styles.card} coletas="125" avaliacao={1.5} />

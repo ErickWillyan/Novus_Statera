@@ -30,8 +30,8 @@ const ColetorInfo = ({coletas, avaliacao}) => {
 
 const styles = StyleSheet.create({
   card: {
-    height: 350,
-    width: 110,
+    height: 110,
+    width: 350,
     borderWidth: 2,
     borderColor: "#008100",
     borderRadius: 25,

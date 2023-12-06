@@ -1,5 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { Avatar, Card } from "react-native-elements";
 import ReturnButton from "../../components/ReturnButton";
 import CustomTextInput from "../../components/CustomTextInput";
@@ -30,7 +37,7 @@ const ProfileScreenDoadorEdit = () => {
   }, [user]);
 
   const handleReturnPress = () => {
-    Navigation.navigate("TabBar", { screen: 'Perfil'});
+    Navigation.navigate("TabBar", { screen: "Perfil" });
   };
 
   return (
@@ -52,17 +59,28 @@ const ProfileScreenDoadorEdit = () => {
         <Text style={styles.userNome}>{user.name}</Text>
       </View>
       <View style={styles.cardContainerInfos}>
-        <Text style={styles.editText}>Editar Informações</Text>
-        <Text style={styles.nameItem}>{nome}</Text>
+        <View style={styles.titleCard }>
+          <Text style={styles.editText}>Editar Informações</Text>
+        </View>
+        <TextInput
+          style={styles.TextInputItem}
+          value={telefone}
+          placeholder="Telefone"
+        />
 
-        <TextInput style={styles.TextInputItem} value={telefone} placeholder="Telefone" />
+        <TextInput style={styles.TextInputItem} value={rua} placeholder="Rua" />
 
-        <TextInput style={styles.TextInputItem}  value={rua} placeholder="Rua" />
+        <TextInput
+          style={styles.TextInputItem}
+          value={bairro}
+          placeholder="Bairro"
+        />
 
-        <TextInput style={styles.TextInputItem} value={bairro} placeholder="Bairro" />
-
-        <TextInput style={styles.TextInputItem} value={cidade} placeholder="Cidade" />
-
+        <TextInput
+          style={styles.TextInputItem}
+          value={cidade}
+          placeholder="Cidade"
+        />
       </View>
       <View style={styles.buttonView}>
         <TouchableOpacity style={styles.button}>
@@ -74,17 +92,22 @@ const ProfileScreenDoadorEdit = () => {
 };
 
 const styles = StyleSheet.create({
-
-  nameItem:{
+  nameItem: {
     fontSize: 20,
     paddingHorizontal: 80,
     borderBottomWidth: 2,
-
   },
-  editText:{
+  titleCard:{
+    width: "100%",
+    alignItems: "center",
+    borderBottomWidth: 1.5,
+    borderColor: "#FF8108",
+    padding: 5,
+  },
+  editText: {
     fontSize: 20,
     color: "#FF8108",
-    borderBottomWidth: 0.5,
+  
   },
 
   nameContainer: {
@@ -98,7 +121,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     textAlign: "center",
-    color: '#121212',
+    color: "#121212",
   },
 
   TextInputItem: {
@@ -109,7 +132,7 @@ const styles = StyleSheet.create({
     borderColor: "#FF8108",
     fontSize: 18,
     fontStyle: "normal",
-    fontWeight: "400",  
+    fontWeight: "400",
   },
   textInputView: {
     borderWidth: 2,
@@ -156,6 +179,7 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 40,
     padding: 20,
+    paddingTop: 0,
     borderRadius: 40,
     alignItems: "center",
     height: 450,

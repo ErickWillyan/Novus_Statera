@@ -6,7 +6,6 @@ export default function ScreenChat() {
   return (
     <View>
       <Text>Tela Chat</Text>
-      <ManualTimePicker />
     </View>
   );
 }
