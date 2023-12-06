@@ -18,7 +18,7 @@ export default function Routes() {
 
   const {user} = useContext (AuthContext);
   const type = user.type;
-  console.log(type);
+
 
   if(type==="doador"){
 

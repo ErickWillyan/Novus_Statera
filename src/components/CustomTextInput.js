@@ -20,6 +20,7 @@ const CustomTextInput = ({ placeholderText, valorInput, textChange, isPassword, 
             options={{
               mask: "99.999.999-9",
             }}
+            keyboardType="numeric" // Definindo o teclado para exibir apenas números
             value={valorInput}
             onChangeText={textChange}
             placeholder={placeholderText}
