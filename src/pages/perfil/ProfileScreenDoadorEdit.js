@@ -1,8 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { Avatar, Card } from "react-native-elements";
 import ReturnButton from "../../components/ReturnButton";
-import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../contexts/auth";
@@ -31,7 +37,7 @@ const ProfileScreenDoadorEdit = () => {
   }, [user]);
 
   const handleReturnPress = () => {
-    Navigation.navigate("ProfileScreenDoador");
+    Navigation.navigate("TabBar", { screen: "Perfil" });
   };
 
   return (
@@ -53,36 +59,55 @@ const ProfileScreenDoadorEdit = () => {
         <Text style={styles.userNome}>{user.name}</Text>
       </View>
       <View style={styles.cardContainerInfos}>
-        <Text style={styles.editText}>Editar Informações</Text>
-        <Text style={styles.nameItem}>{nome}</Text>
+        <View style={styles.titleCard }>
+          <Text style={styles.editText}>Editar Informações</Text>
+        </View>
+        <TextInput
+          style={styles.TextInputItem}
+          value={telefone}
+          placeholder="Telefone"
+        />
 
-        <TextInput style={styles.TextInputItem} value={telefone} placeholder="Telefone" />
+        <TextInput style={styles.TextInputItem} value={rua} placeholder="Rua" />
 
-        <TextInput style={styles.TextInputItem}  value={rua} placeholder="Rua" />
+        <TextInput
+          style={styles.TextInputItem}
+          value={bairro}
+          placeholder="Bairro"
+        />
 
-        <TextInput style={styles.TextInputItem} value={bairro} placeholder="Bairro" />
-
-        <TextInput style={styles.TextInputItem} value={cidade} placeholder="Cidade" />
-
+        <TextInput
+          style={styles.TextInputItem}
+          value={cidade}
+          placeholder="Cidade"
+        />
       </View>
       <View style={styles.buttonView}>
-        <CustomButton title={"Confirmar"} onPress={""} />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Confirmar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-
-  nameItem:{
+  nameItem: {
     fontSize: 20,
     paddingHorizontal: 80,
     borderBottomWidth: 2,
-
   },
-  editText:{
+  titleCard:{
+    width: "100%",
+    alignItems: "center",
+    borderBottomWidth: 1.5,
+    borderColor: "#FF8108",
+    padding: 5,
+  },
+  editText: {
     fontSize: 20,
-    color: "#008100",
+    color: "#FF8108",
+  
   },
 
   nameContainer: {
@@ -96,6 +121,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     textAlign: "center",
+    color: "#121212",
   },
 
   TextInputItem: {
@@ -103,10 +129,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
-    borderColor: "#008100",
+    borderColor: "#FF8108",
     fontSize: 18,
     fontStyle: "normal",
-    fontWeight: "400",  
+    fontWeight: "400",
   },
   textInputView: {
     borderWidth: 2,
@@ -153,6 +179,7 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 40,
     padding: 20,
+    paddingTop: 0,
     borderRadius: 40,
     alignItems: "center",
     height: 450,
@@ -196,7 +223,23 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   buttonView: {
-    marginTop: 20,
+    marginTop: 40,
+  },
+  button: {
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#FF8108",
+    backgroundColor: "#F2F2F2",
+    padding: 10,
+    width: 280,
+    height: 52,
+  },
+  buttonText: {
+    color: "#FF8108",
+    fontSize: 20,
+    fontStyle: "normal",
+    lineHeight: 24,
+    textAlign: "center",
   },
 });
 export default ProfileScreenDoadorEdit;

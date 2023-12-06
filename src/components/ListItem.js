@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Avatar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { api } from "../../libs/api";
+import { api } from "../libs/api";
 
 export default function ListItem({ data }) {
   async function acceptColeta() {
@@ -34,8 +34,9 @@ export default function ListItem({ data }) {
   }
 
   const handleAcceptButton = () => {
-    acceptColeta();
-    acceptRelationsColeta();
+    acceptColeta().then(
+      acceptRelationsColeta().then(console.log("Coleta aceita"))
+    );
   };
 
   const handleDeleteButton = () => {
@@ -47,13 +48,6 @@ export default function ListItem({ data }) {
   return (
     <View style={styles.areaPessoa}>
       <View style={styles.areaRow}>
-        <Avatar
-          size="large"
-          rounded
-          source={{
-            uri: "../../assts/img/Logo.png",
-          }}
-        />
         <View style={styles.areaTextos}>
           <Text style={styles.textoNome}>{data.coleta.doador.name}</Text>
           <Text style={styles.textoSolicitou}>Solicitou uma coleta</Text>
