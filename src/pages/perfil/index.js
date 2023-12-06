@@ -11,8 +11,7 @@ export default function ScreenPerfil() {
   return (
     <View>
       <Text> Tela Perfil</Text>
-      <TouchableOpacity 
-        
+      <TouchableOpacity    
       style = {{padding:50, backgroundColor:"#f456"}}
       onPress={singOut}>
         <Text>Sair</Text>

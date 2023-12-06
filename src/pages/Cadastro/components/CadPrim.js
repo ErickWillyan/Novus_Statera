@@ -5,7 +5,6 @@ import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
-import ScreenLogin from "../../login";
 import { useRegisterUser } from "../context/register";
 
 export default function ScreenCadastroPrim() {
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    
   },
   perfil: {
     width: 280,
@@ -86,12 +86,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    bottom:"17%",
   },
   inputs: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 70,
-    marginTop: 50,
+    bottom: 100,
+    marginBottom: "-20%"
   },
 });
