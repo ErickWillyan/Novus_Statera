@@ -52,6 +52,7 @@ export default function ScreenCadastroPrim() {
           placeholderText={"Informe seu RG"}
           valorInput={rg}
           textChange={(text) => setRg(text)}
+          isRgMasked={true}
         />
 
         

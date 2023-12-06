@@ -45,12 +45,16 @@ export default function ScreenCadastroSec() {
           placeholderText={"Senha"}
           valorInput={password}
           textChange={(text) => setPassword(text)}
+          isPassword={true}
+          showPasswordButton={true}
         />
 
         <CustomTextInput
           placeholderText={"Repetir Senha"}
           valorInput={repetSenha}
           textChange={(text) => setRepetSenha(text)}
+          isPassword={true}
+          showPasswordButton={true}
         />
         <View style={{ top: 15, alignItems: "center" }}>
           <RadioButton options={["coletor", "doador"]} onSelect={handleSelecao}/>

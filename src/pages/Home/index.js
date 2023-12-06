@@ -1,22 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  FlatList,
-} from "react-native";
+import { View, Text, StyleSheet, ImageBackground, FlatList, } from "react-native";
 import CustomSearchBar from "../../components/CustomSearchbar";
 import CardColetor from "../../components/CardColetor";
-
 import { AuthContext } from "../../contexts/auth";
+import ColetorInfo from "../../components/ColetorInfo";
 
 import { api } from "../../libs/api";
+import { Card } from "react-native-elements";
+
 
 export default function ScreenHome() {
+
+
   const [coletores, setColetores] = useState([]);
   const [searchText, setSearchText] = useState("");
   const { user } = useContext(AuthContext);
+  const type = user.type;
 
   useEffect(() => {
     async function listar() {
@@ -31,6 +30,16 @@ export default function ScreenHome() {
     listar();
   }, []);
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      resizeMode: "cover",
+      alignItems: "center",
+    },
+  });
+
+
+if(type==="doador"){
   return (
     <View style={styles.container}>
       <CustomSearchBar
@@ -48,13 +57,14 @@ export default function ScreenHome() {
     </View>
   );
 }
-
-// Função para obter o endereço do array tb_user_endereç
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    resizeMode: "cover",
-    alignItems: "center",
-  },
-});
+/////////////////////////////////////////// MENU COLETOR ABAIXO ///////////////////////////////////////////
+else{
+  return (
+    <ImageBackground
+        source={require("../../assets/img/background.png")}
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      >
+    </ImageBackground>   
+  );
+};
+}
