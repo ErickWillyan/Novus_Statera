@@ -1,25 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
-import RadioButton from "../../../components/RadioButton";
-import CustomCheckbox from "../../../components/CustomCheckbox";
 import { useRegisterUser } from "../context/register";
-import { useNavigation } from "@react-navigation/native";
 
 export default function ScreenCadastroSec() {
-  const navigation = useNavigation();
   const { handleNextStep, handleBackStep } = useRegisterUser();
-  const [email, setEmail] = useState("");
-  const [type, setType] = useState("");
-  const [password, setPassword] = useState("");
-  const [repetSenha, setRepetSenha] = useState("");
-
-  const handleSelecao = (opcao) => {
-    setType(opcao);
-  };
+  const [rua, setRua] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
 
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
@@ -35,38 +26,27 @@ export default function ScreenCadastroSec() {
       </View>
       <View style={styles.inputs}>
         <CustomTextInput
-          placeholderText={"Email"}
-          valorInput={email}
-          textChange={(text) => setEmail(text)}
-        />
-
-
-        <CustomTextInput
-          placeholderText={"Senha"}
-          valorInput={password}
-          textChange={(text) => setPassword(text)}
+          placeholderText={"Informe sua rua"}
+          valorInput={rua}
+          textChange={(text) => setRua(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Repetir Senha"}
-          valorInput={repetSenha}
-          textChange={(text) => setRepetSenha(text)}
+          placeholderText={"Informe sua bairro"}
+          valorInput={bairro}
+          textChange={(text) => setBairro(text)}
         />
-        <View style={{ top: 15, alignItems: "center" }}>
-          <RadioButton options={["coletor", "doador"]} onSelect={handleSelecao}/>
-          <View style={{ flexDirection: "row", alignItems: "center", top: 10 }}>
-            <CustomCheckbox id="termos" />
-            <Text style={{ marginLeft: -35, marginRight: 1 }}>
-              Eu li e concordo com os
-            </Text>
-            <LinkText placeholder={"Termos de uso"} />
-          </View>
-        </View>
+
+        <CustomTextInput
+          placeholderText={"Informe sua cidade"}
+          valorInput={cidade}
+          textChange={(text) => setCidade(text)}
+        />
+
         <View style={{ height: 58 }} />
         <CustomButton
-          title={"Cadastrar"}
-          onPress={() => handleNextStep({ email, password, type }, navigation.navigate("Login"))}
-         
+          title={"Próximo"}
+          onPress={() => handleNextStep({bairro, rua, cidade })}
         />
       </View>
     </View>
@@ -82,7 +62,7 @@ const styles = StyleSheet.create({
   perfil: {
     width: 280,
     height: 280,
-    top: 10,
+    top: 43,
   },
   return: {
     position: "absolute",
@@ -93,16 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
+    bottom:"17%",
   },
   inputs: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 20,
-    marginTop: -100,
-  },
-  radio: {
-    margintop: 10,
+    bottom: 100,
+    marginBottom: "-20%"
   },
 });

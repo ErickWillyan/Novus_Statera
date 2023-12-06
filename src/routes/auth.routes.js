@@ -32,7 +32,6 @@ export default function AuthRoutes() {
           }}
         />
       )}
-      
 
       <Stack.Screen
         name="Cadastro"
@@ -41,6 +40,7 @@ export default function AuthRoutes() {
           headerShown: false,
         }}
       />
+  
     </Stack.Navigator>
   );
 }

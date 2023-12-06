@@ -5,7 +5,6 @@ import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
-import ScreenLogin from "../../login";
 import { useRegisterUser } from "../context/register";
 
 export default function ScreenCadastroPrim() {
@@ -38,19 +37,19 @@ export default function ScreenCadastroPrim() {
       </View>
       <View style={styles.inputs}>
         <CustomTextInput
-          placeholderText={"Nome"}
+          placeholderText={"Digite seu nome"}
           valorInput={name}
           textChange={(text) => setName(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Telefone"}
+          placeholderText={"Informe seu telefone"}
           valorInput={telefone}
           textChange={(text) => setTelefone(text)}
         />
 
         <CustomTextInput
-          placeholderText={"Registro Geral"}
+          placeholderText={"Informe seu RG"}
           valorInput={rg}
           textChange={(text) => setRg(text)}
         />
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    
   },
   perfil: {
     width: 280,
@@ -86,12 +86,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    bottom:"17%",
   },
   inputs: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 70,
-    marginTop: 50,
+    bottom: 100,
+    marginBottom: "-20%"
   },
 });

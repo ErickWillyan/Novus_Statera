@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList} from "react-native";
 import ComboBox from "../../components/ComboBox";
+import CardColeta from "../../components/CardColeta";
 
 export default function ScreenHistorico() {
   const options = [

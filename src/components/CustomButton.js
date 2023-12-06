@@ -1,9 +1,14 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const CustomButton = ({ title, onPress }) => {
+const CustomButton = ({ title, onPress, customWidth }) => {
+  const buttonStyles = {
+    ...styles.button,
+    width: customWidth || styles.button.width, // Usa a largura personalizada ou a largura padrão
+  };
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={buttonStyles} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
@@ -23,7 +28,6 @@ const styles = StyleSheet.create({
     color: "#008100", // Cor do texto
     fontSize: 20,
     fontStyle: "normal",
-    fontWeight: "400",
     lineHeight: 24,
     textAlign: "center",
   },
