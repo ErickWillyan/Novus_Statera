@@ -8,7 +8,6 @@ import ScreenHome from "../pages/Home";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
-import ProfileScreen from "../pages/perfil/ProfileScreen"
 import ScreenNotifi from "../pages/Notificações/ScreenNotifi";
 
 
@@ -97,7 +96,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Perfil"
-        component={ProfileScreen}
+        component={ProfileScreenDoador}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

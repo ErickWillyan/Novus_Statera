@@ -1,178 +1,189 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { Avatar, Card } from 'react-native-elements';
-import ReturnButton from '../../components/ReturnButton';
-import CustomButton from '../../components/CustomButton';
-import CustomTextInput from '../../components/CustomTextInput';
+import React, { useState, useContext, useEffect } from "react";
+import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { Avatar, Card } from "react-native-elements";
+import ReturnButton from "../../components/ReturnButton";
+import CustomButton from "../../components/CustomButton";
+import CustomTextInput from "../../components/CustomTextInput";
+import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../../contexts/auth";
 
-const ProfileScreenDoadorEdit = ({onCancelEdit, navigation}) => {
-  // const user = {
-  //   nome: 'Mário da Silva Jesus',
-  //   local: 'Itapevi - SP',
-  //   doacoes: '15',
-  //   rg: '31.440.XXX-X',
-  //   telefone: '(11) 92776-0676',
-  //   endereco: 'Av. Brasil, 180, Jardim São Luis, Santana de Parnaíba - SP',
-  //   email: 'mariobaigon@gmail.com',
-  //   senha: '********',
-  // };
+const ProfileScreenDoadorEdit = () => {
+  const Navigation = useNavigation();
 
-  const [nome, setNome] = useState("Mário da Silva Jesus");
-  const [rg, setRg] = useState("31.440.XXX-X");
-  const [telefone, setTelefone] = useState("(11) 92776-0676");
-  const [endereco, setEndereco] = useState("Av. Brasil, 180, Jardim São Luis, Santana de Parnaíba - SP");
+  const { user } = useContext(AuthContext);
+
+  const [nome, setNome] = useState();
+  const [telefone, setTelefone] = useState();
+  const [rua, setRua] = useState();
+  const [bairro, setBairro] = useState();
+  const [cidade, setCidade] = useState();
+
+  useEffect(() => {
+    function listDados() {
+      setNome(user.name);
+      setTelefone(user.telefone);
+      setRua(user.rua);
+      setBairro(user.bairro);
+      setCidade(user.cidade);
+    }
+
+    listDados();
+  }, [user]);
 
   const handleReturnPress = () => {
-    // Chame a função onCancelEdit para cancelar a edição
-    onCancelEdit();
-    // Navegue de volta para a tela ProfileScreenDoador
-    navigation.navigate('ProfileScreenDoador');
+    Navigation.navigate("ProfileScreenDoador");
   };
 
   return (
     <View style={styles.container}>
-    <View style={styles.returnView}>
-      <ReturnButton style={styles.returnButton} onPress={handleReturnPress}/>
-    </View>
-      <Card containerStyle={[styles.cardContainerAvatar, {width: '50%'}]}>
+      <View style={styles.returnView}>
+        <ReturnButton style={styles.returnButton} onPress={handleReturnPress} />
+      </View>
+      <Card containerStyle={[styles.cardContainerAvatar, { width: "50%" }]}>
         <View style={styles.avatarContainer}>
-        <Avatar
-          size="xlarge"
-          rounded
-          source={{
-            uri: '../../assets/img/Erickbeminclusivo.jpg',
-          }}
-        />
+          <Avatar
+            size="xlarge"
+            rounded
+            source={require("../../assets/img/Juan.jpg")}
+          />
         </View>
       </Card>
-      <View style={styles.viewText}>
-      <Card containerStyle={styles.cardContainerEdit}>
-      <Text style={styles.textEdit}>Clique em um campo para editar</Text>
-      </Card>
+
+      <View style={styles.nameContainer}>
+        <Text style={styles.userNome}>{user.name}</Text>
       </View>
-      <Card containerStyle={styles.cardContainerInfos}>
+      <View style={styles.cardContainerInfos}>
+        <Text style={styles.editText}>Editar Informações</Text>
+        <Text style={styles.nameItem}>{nome}</Text>
 
-        <Text style={styles.textType}>Nome de usuário:</Text>
-        <CustomTextInput 
-          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
-          placeholderText={nome}
-          valorInput={nome}
-          textChange={(text) => setNome(text)}
-          />
+        <TextInput style={styles.TextInputItem} value={telefone} placeholder="Telefone" />
 
-        <Text style={styles.textType}>Registro Geral:</Text>
-        <CustomTextInput 
-          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
-          placeholderText={rg}
-          valorInput={rg}
-          textChange={(text) => setRg(text)}
-          />
+        <TextInput style={styles.TextInputItem}  value={rua} placeholder="Rua" />
 
-        <Text style={styles.textType}>Telefone</Text>
-        <CustomTextInput 
-          style={[styles.textInfo, {borderBottomWidth: 1, borderColor: 'gray'}]}
-          placeholderText={telefone}
-          valorInput={telefone}
-          textChange={(text) => setTelefone(text)}
-          />
+        <TextInput style={styles.TextInputItem} value={bairro} placeholder="Bairro" />
 
-        <Text style={styles.textType}>Endereço</Text>
-        <CustomTextInput 
-          style={styles.textInfo}
-          placeholderText={endereco}
-          valorInput={endereco}
-          textChange={(text) => setEndereco(text)}
-          />
-      
-      </Card>
+        <TextInput style={styles.TextInputItem} value={cidade} placeholder="Cidade" />
+
+      </View>
       <View style={styles.buttonView}>
-        <CustomButton
-          title={"Confirmar"}
-          onPress={""}
-          />
+        <CustomButton title={"Confirmar"} onPress={""} />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+
+  nameItem:{
+    fontSize: 20,
+    paddingHorizontal: 80,
+    borderBottomWidth: 2,
+
+  },
+  editText:{
+    fontSize: 20,
+    color: "#008100",
+  },
+
+  nameContainer: {
+    marginTop: 10,
+    marginBottom: 20,
+    width: "100%",
+  },
+
+  userNome: {
+    fontSize: 30,
+    fontWeight: "bold",
+    marginTop: 10,
+    textAlign: "center",
+  },
+
+  TextInputItem: {
+    width: "90%",
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 10,
+    borderColor: "#008100",
+    fontSize: 18,
+    fontStyle: "normal",
+    fontWeight: "400",  
+  },
+  textInputView: {
+    borderWidth: 2,
+    borderColor: "#33f",
+    width: "90%",
+    backgroundColor: "#ff5",
+    alignItems: "center",
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    justifyContent: 'flex-start', 
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "center",
     marginTop: -10,
   },
-  userNome: {
-    fontSize: 21,
-    fontWeight: 'bold',
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  userLocal: {
-    fontSize: 14,
-    color: 'gray',
-    marginTop: 5,
-    textAlign: 'center',
-  },
+
   cardContainerAvatar: {
-    backgroundColor: 'transparent',
-    borderColor: 'transparent',
+    backgroundColor: "transparent",
+    borderColor: "transparent",
     borderWidth: 0,
     borderRadius: 0,
     elevation: 0,
-    shadowColor: 'transparent',
-    width: '80%', 
-    height: '40%',
+    shadowColor: "transparent",
+    width: "80%",
+    height: "40%",
     marginBottom: -140,
   },
   cardContainerDonations: {
     marginTop: -60,
     borderRadius: 40,
-    width: '85%',
-    height: '13.5%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FF8108',
+    width: "85%",
+    height: "13.5%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF8108",
     borderBottomWidth: 12,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomColor: '#9D4F05',
+    borderBottomColor: "#9D4F05",
   },
   cardContainerInfos: {
-    marginTop: -17 ,
-    width: '92%',
-    height: '50%',
-    overflowY: 'scroll',
+    backgroundColor: "white",
+    width: "90%",
     borderRadius: 40,
+    padding: 20,
+    borderRadius: 40,
+    alignItems: "center",
+    height: 450,
+    justifyContent: "space-around",
   },
   cardWrapper: {
     borderWidth: 0,
   },
   returnView: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     left: 10,
     padding: 10,
   },
   avatarContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 20,
   },
   textInfo: {
     fontSize: 21,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 25,
-    textAlign: 'center',
-    color: '#6E6E6F',
+    textAlign: "center",
+    color: "#6E6E6F",
     paddingBottom: 25,
   },
   textType: {
     fontSize: 28,
-    color: 'gray',
+    color: "gray",
     marginTop: 15,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 15,
   },
   viewText: {
