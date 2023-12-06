@@ -147,6 +147,7 @@ export default function ScreenPerfilColetor() {
     RegisterColeta().then(() => {
       console.log("Coleta cadastrada");
     });
+    setModalOpen(false)
   };
 
   const handleOnPressReturnButton = () => {

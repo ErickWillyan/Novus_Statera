@@ -15,7 +15,7 @@ const SwichButtons = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containerButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: 'transparent',

@@ -31,7 +31,7 @@ const ProfileScreenDoadorEdit = () => {
   }, [user]);
 
   const handleReturnPress = () => {
-    Navigation.navigate("ProfileScreenDoador");
+    Navigation.navigate("TabBar", { screen: 'Perfil'});
   };
 
   return (

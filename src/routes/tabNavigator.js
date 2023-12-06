@@ -8,7 +8,7 @@ import ScreenHome from "../pages/Home";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ScreenLogin from "../pages/login";
-import ScreenNotifi from "../pages/Notificações/Index";
+import ScreenNotifi from "../pages/notificacoes/Index";
 import Comprovante from "../pages/Comprovante/Index";
 import SwichButtons from "../components/SwitchButtons";
 
@@ -67,7 +67,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Home"
-        component={SwichButtons}
+        component={ScreenHome}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

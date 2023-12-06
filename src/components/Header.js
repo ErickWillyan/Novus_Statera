@@ -20,13 +20,13 @@ const styles = StyleSheet.create ({
         backgroundColor: '#FFF',
     },
     texto:{ 
-        fontWeight: 650,
+        fontWeight:' 650',
         fontSize: 20,
         textTransform: 'uppercase',
         color: '#2E872E',
     },
     texto2:{
-        fontWeight: 800,
+        fontWeight: '800',
     },
     rowHeader:{
         flexDirection:'row',
