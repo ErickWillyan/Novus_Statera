@@ -5,6 +5,7 @@ import PerfilColetor from "./../pages/PerfilColetor";
 import RegisterLocal from "./../pages/PontoColeta";
 import ProfileScreenDoadorEdit from "../pages/perfil/ProfileScreenDoadorEdit";
 import ProfileScreenDoador from "../pages/perfil/ProfileScreenDoador";
+import Comprovante from "../pages/Comprovante/Index";
 
 
 const Stack = createStackNavigator();
@@ -47,6 +48,13 @@ export default function MainRoutes() {
       <Stack.Screen
         name="ProfileScreenDoador"
         component={ProfileScreenDoador}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RealizarColeta"
+        component={Comprovante}
         options={{
           headerShown: false,
         }}

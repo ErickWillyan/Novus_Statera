@@ -2,20 +2,20 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importando o ícone
 
-const CardColeta = ({ nome, endereco, data, QntOleo }) => {
+const CardColeta = ({data }) => {
   return (
     <View style={styles.cardContainer}>
       {/* Nome e circunferência acima da linha cinza */}
       <View style={styles.headerContainer}>
         <View style={styles.fotoPerfil}></View>
-        <Text style={styles.nomeText}>{nome}</Text>
+        <Text style={styles.nomeText}>{data.doador.name}</Text>
       </View>
 
       {/* Linha cinza claro no meio do card */}
       <View style={styles.divider} />
 
       {/* Endereço abaixo da linha cinza */}
-      <Text style={styles.enderecoText}>{endereco}</Text>
+      <Text style={styles.enderecoText}>{data.Local.rua}</Text>
 
       {/* Layout para a circunferência e a data */}
       <View style={styles.dataContainer}>
@@ -23,13 +23,13 @@ const CardColeta = ({ nome, endereco, data, QntOleo }) => {
         <View style={styles.circunferencia}></View>
         
         {/* Data abaixo da circunferência */}
-        <Text style={styles.dataText}>{data}</Text>
+        <Text style={styles.dataText}>{data.dataRealizacao}</Text>
       </View>
 
       {/* Símbolo de gota à esquerda da quantidade de óleo */}
       <View style={styles.gotaContainer}>
         <Icon name="tint" size={20} color="#FF8108" />
-        <Text style={styles.qntOleoText}>{QntOleo} Litros de óleo coletado</Text>
+        <Text style={styles.qntOleoText}>{data.qnt_oleo} Litros de óleo coletado</Text>
       </View>
 
       {/* Outros componentes ou conteúdo aqui */}
@@ -42,8 +42,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#0FA958',
     padding: 16,
     borderRadius: 8,
-    margin: 16,
-    width: '80%',
+    margin: 15,
+    width: "80%",
+    minWidth: 350,
+  
   },
   headerContainer: {
     flexDirection: 'row',
