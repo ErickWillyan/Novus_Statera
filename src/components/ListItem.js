@@ -3,8 +3,23 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Avatar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { api } from "../libs/api";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function ListItem({ data }) {
+
+  const dataRealizacao = new Date(data.coleta.dataRealizacao)
+
+  const dia = dataRealizacao.getDay()
+  const mesesAbreviados = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+  const mesAbreviado = mesesAbreviados[dataRealizacao.getMonth()];
+  const ano = dataRealizacao.getFullYear();
+  const horas = dataRealizacao.getHours();
+  const minutos = dataRealizacao.getMinutes();
+  const diaFormatado = dia < 10 ? `0${dia}` : dia;
+  const minutosFormatados = minutos < 10 ? `0${minutos}` : minutos;
+
+
+
   async function acceptColeta() {
     const dados = data.coleta.id;
 
@@ -46,104 +61,94 @@ export default function ListItem({ data }) {
   };
 
   return (
-    <View style={styles.areaPessoa}>
-      <View style={styles.areaRow}>
-        <View style={styles.areaTextos}>
-          <Text style={styles.textoNome}>{data.coleta.doador.name}</Text>
-          <Text style={styles.textoSolicitou}>Solicitou uma coleta</Text>
-          <Text style={styles.textoCidade}>{data.coleta.Local.cidade}</Text>
-          <View style={styles.iconContainer}>
-            <View style={styles.circunferencia}></View>
-            <Text style={styles.textoInfo}>{data.coleta.dataRealizacao}</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icon name="tint" size={20} color="#FF8108" />
-            <Text style={styles.textoInfo}>
-              {" "}
-              {data.coleta.qnt_oleo} Litros de óleo disponíveis
-            </Text>
-          </View>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.ViewText}>
+        <Text style={styles.textoName}>{data.coleta.doador.name}</Text>
+        <Text style={styles.textoCidade}>
+          Rua {data.coleta.Local.rua}- {data.coleta.Local.cidade}
+        </Text>
+        <Text style={styles.textoOleo}>
+          <Ionicons name="water-sharp" size={16} color="#FF8108" />{data.coleta.qnt_oleo} L   
+          <Text style={styles.dataHora}>
+          {" "} {diaFormatado}{" "}{mesAbreviado} {horas}:{minutosFormatados}
+        </Text>
+        </Text>
+
+        
       </View>
-      <View style={styles.buttonsContainer}>
+      <View style={styles.ViewButtons}>
         <TouchableOpacity
-          style={[styles.botao, styles.buttonNegar]}
+          style={styles.botao}
           onPress={handleDeleteButton}
         >
-          <Text style={styles.textoBotao}>Negar</Text>
+        <Ionicons name="close" size={32} color="red" />
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.botao, styles.buttonConfirmar]}
+          style={styles.botao}
           onPress={handleAcceptButton}
         >
-          <Text style={styles.textoBotao}>Aceitar</Text>
+         <Ionicons name="checkmark-sharp" size={32} color="green" />
         </TouchableOpacity>
       </View>
     </View>
+
+    
   );
 }
 
 const styles = StyleSheet.create({
-  areaPessoa: {
-    backgroundColor: "#ADADAD",
-    height: 158,
-    marginBottom: 3,
-  },
-  textoNome: {
-    color: "#0F0F0F",
-    fontSize: 20,
-    textTransform: "uppercase",
-  },
-  textoSolicitou: {
-    color: "#2E872E",
-  },
-  textoCidade: {
-    color: "#0F0F0F",
-    fontSize: 19,
-  },
-  textoInfo: {
-    color: "#3F3F3E",
-    fontSize: 15,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    paddingVertical: 8,
-  },
-  botao: {
-    width: 100,
-    height: 35,
-    padding: 8,
-    borderRadius: 10,
-  },
-  buttonConfirmar: {
-    backgroundColor: "#4CAF50",
-    marginRight: 60,
-    marginLeft: 40,
-  },
-  buttonNegar: {
-    backgroundColor: "#AF504C",
-    marginRight: 40,
-    marginLeft: 60,
-  },
-  textoBotao: {
-    textAlign: "center",
-    color: "#FFF",
-  },
-  areaRow: {
-    flexDirection: "row",
-  },
-  areaTextos: {
-    marginLeft: 20,
-  },
-  iconContainer: {
+  container: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    height: 110,
+    width: "80%",
+    marginVertical: 20,
+    marginHorizontal: 10,
+    minWidth: 380,
+    maxWidth: "95%",
+    borderRadius: 48,
+    backgroundColor: "white",
+    elevation: 5,
   },
-  circunferencia: {
-    width: 15,
-    height: 15,
-    borderRadius: 7.5,
-    backgroundColor: "#32CD32",
-    marginRight: 8,
+  ViewText: {
+    marginLeft: 30,
+    maxWidth: "50%",
   },
+  textoName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#ADADAD",
+  },
+
+  ViewButtons:{
+    marginRight:20,
+    flexDirection: 'row',
+    width: "32%",
+    justifyContent: "space-between"
+  },
+
+  botao:{
+    backgroundColor: "white",
+    height: 55,
+    width: 55,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
+    elevation: 5,
+  },
+
+  textoCidade:{
+      fontSize: 15,
+  },
+  textoOleo:{
+    alignItems: "center",
+    fontSize: 16,
+  },
+  dataHora:{
+    color: "gray",
+    fontSize: 16,
+  }
+
+  
 });
