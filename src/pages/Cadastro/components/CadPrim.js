@@ -11,6 +11,8 @@ import * as ImagePicker from 'expo-image-picker';
 export default function ScreenCadastroPrim() {
 
    const [image, setImage] = useState(null);
+   const [informacoesImagem, setInformacoesImagem] = useState(null);
+
 
    const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -25,7 +27,13 @@ export default function ScreenCadastroPrim() {
     if (!result.canceled) {
       setImage(result.assets[0].uri);
     }else{
-      
+      setImagem(resultado);
+      setInformacoesImagem({
+        uri: result.assets[0].uri,
+        type: result.assets[0].type,
+        name: 'imagem.jpg',
+        // Adicione outras informações que você deseja associar à imagem
+      });
     }
   };
 
