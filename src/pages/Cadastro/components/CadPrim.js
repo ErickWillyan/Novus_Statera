@@ -6,31 +6,29 @@ import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
 import { useRegisterUser } from "../context/register";
-import {launchImageLibrary} from 'react-native-image-picker'
+import * as ImagePicker from 'expo-image-picker';
 
 export default function ScreenCadastroPrim() {
 
-function openAlbum(){
-  const options = {
-    mediaType: "photo",
-    quality: 1,
-    selectionLimit: 1,
-  }
+   const [image, setImage] = useState(null);
 
-  launchImageLibrary(options, (response) => {
+   const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-    if(response.didCancel){
-      console.log("IMAGE PICKER CANCELADO")
-      return;
-    }else if(response.error){
-      console.log("GEROU ERRO ", response.errorMessage)
-      return;
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }else{
+      
     }
+  };
 
-    console.log(response.assets)
-
-  })
-}
 
   const { handleNextStep } = useRegisterUser();
   const [name, setName] = useState("");
@@ -45,7 +43,7 @@ function openAlbum(){
 
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
-      <View style={styles.return}>
+      <View style={styles.returDn}>
         <ReturnButton onPress={handleNavigation} />
       </View>
       <View style={styles.imagem}>
@@ -56,7 +54,7 @@ function openAlbum(){
         {/* <LinkText 
         onPress={openAlbum}
         placeholder={"Adicionar Foto"} /> */}
-        <TouchableOpacity onPress={openAlbum}>
+        <TouchableOpacity onPress={pickImage}>
           <Text>Adicionar Foto</Text>
         </TouchableOpacity>
       </View>
@@ -121,5 +119,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     bottom: 100,
     marginBottom: "-20%"
+  },
+  returDn:{
+    position: "absolute",
+    top: 20,
+    left:20  
   },
 });
