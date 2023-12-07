@@ -73,7 +73,7 @@ export default function ScreenNotifi() {
         <Text style={styles.buttonText}>Em Andamento</Text>
       </TouchableOpacity>
     </View>
-
+<View style={styles.ViewList}>
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
@@ -82,10 +82,17 @@ export default function ScreenNotifi() {
       }
       />
     </View>
+
+</View>
   );
 }
 
 const styles = StyleSheet.create({
+
+  ViewList:{
+    width: "100%",
+    alignItems: "center"
+  },
   container: {
     flex: 1,
   },
@@ -94,18 +101,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'transparent',
     paddingHorizontal: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
+    
   },
   button: {
     flex: 1,
-    backgroundColor: '#dcdcdc',
     padding: 10,
     marginHorizontal: 5,
-    borderRadius: 10,
+    borderRadius: 50,
+   
+    backgroundColor: "white",
+    elevation: 5
   },
   buttonText: {
-    color: 'white',
+    // color: '#ADADAD',
+    color: "black",
     textAlign: 'center',
+    fontWeight: "500"
   },
 });
