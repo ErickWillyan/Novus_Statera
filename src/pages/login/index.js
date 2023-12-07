@@ -6,6 +6,7 @@ import CustomButton from "../../components/CustomButton";
 
 
 import { AuthContext } from "../../contexts/auth";
+import { useNavigation } from "@react-navigation/core";
 
 export default function ScreenLogin() {
   
@@ -19,6 +20,10 @@ export default function ScreenLogin() {
       console.log("PREENCHA TODOS OS CAMPOS");
       return;
     }
+    
+    const toggleShowPassword = () => {
+      setShowPassword(!showPassword);
+    };
 
     await singIn({email, password});
 
@@ -51,6 +56,8 @@ export default function ScreenLogin() {
             setPassword(text);
           }}
           placeholderText={"Insira sua senha"}
+          isPassword={true}
+          showPasswordButton={true}
         />
       </View>
       <View style={{ height: 28 }} />

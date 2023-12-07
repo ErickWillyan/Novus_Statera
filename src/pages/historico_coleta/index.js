@@ -1,33 +1,39 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList} from "react-native";
+import React, { useState, useEffect, useContext } from "react";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import ComboBox from "../../components/ComboBox";
 import CardColeta from "../../components/CardColeta";
+import { api } from "../../libs/api";
+import { AuthContext } from "../../contexts/auth";
 
 export default function ScreenHistorico() {
-  const options = [
-    "Mais Recentes",
-    "Mais Antigos",
-    "+ Óleo",
-    "- Óleo",
-    "Melhor Avaliação",
-    "Pior Avaliação",
-  ];
+  const { user } = useContext(AuthContext);
 
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [coletas, setColetas] = useState([]);
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-  };
+  useEffect(() => {
+    async function listar() {
+      const doadorId = user.doadorId;
+
+      const response = await api.get("/ListColetaRealizada", {
+        params: { doadorId },
+      });
+
+      console.log(response.data);
+
+      setColetas(response.data);
+    }
+
+    listar();
+  }, [user]);
 
   return (
     <View>
-      <View style={styles.container}>
-        <Text style={styles.text}>Ordenar por:</Text>
-        <ComboBox
-          options={options}
-          selectedOption={selectedOption}
-          onSelect={handleSelect}
-          style={styles.comboBox}
+      <View style={styles.containerList}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          data={coletas}
+          renderItem={({ item }) => <CardColeta data={item} />}
         />
       </View>
     </View>
@@ -35,19 +41,8 @@ export default function ScreenHistorico() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
+  containerList:{
+    width: "100%",
     alignItems: "center",
-    marginLeft: 100,
-    top: 100,
-    position: "absolute"
-  },
-  text: {
-    fontSize: 18,
-    marginRight: 10,
-  },
-  comboBox: {
-    width: 200,
-    height: 40,
   },
 });

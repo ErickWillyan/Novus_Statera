@@ -71,12 +71,14 @@ function openAlbum(){
           placeholderText={"Informe seu telefone"}
           valorInput={telefone}
           textChange={(text) => setTelefone(text)}
+          isPhoneMasked={true}
         />
 
         <CustomTextInput
           placeholderText={"Informe seu RG"}
           valorInput={rg}
           textChange={(text) => setRg(text)}
+          isRgMasked={true}
         />
 
         

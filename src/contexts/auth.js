@@ -124,6 +124,7 @@ export default function AuthProvider({ children }) {
         type: "",
         token: "",
       });
+
     });
   }
 

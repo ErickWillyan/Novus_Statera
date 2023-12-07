@@ -7,10 +7,14 @@ import {
   Pressable,
 } from "react-native";
 import { Avatar } from "react-native-elements";
+import { useNavigation } from "@react-navigation/core";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { api } from "../libs/api";
 
 export default function ListAndamento({ data }) {
+
+  const navigation = useNavigation();
+
   async function FinalColeta() {
     const dados = data.coleta.id;
 
@@ -35,6 +39,7 @@ export default function ListAndamento({ data }) {
 
   const HandlePressable = () => {
     console.log("Clicou")
+    navigation.navigate("RealizarColeta", {dados: data})
   }
 
   return (
@@ -59,12 +64,6 @@ export default function ListAndamento({ data }) {
           </View>
         </View>
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity
-            style={[styles.botao, styles.buttonConfirmar]}
-            onPress={handleAcceptButton}
-          >
-            <Text style={styles.textoBotao}>Aceitar</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </Pressable>
@@ -74,7 +73,6 @@ export default function ListAndamento({ data }) {
 const styles = StyleSheet.create({
   areaPessoa: {
     backgroundColor: "#ADADAD",
-    height: 158,
     marginBottom: 3,
   },
   textoNome: {
