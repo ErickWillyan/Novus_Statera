@@ -1,21 +1,22 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import {useNavigation} from "@react-navigation/native"
-
-
-
-const CardColetor = ({data}) => {
-
+const CardColetor = ({ data }) => {
   const navigation = useNavigation();
 
-  function HandleNavigation(){
-      navigation.navigate("PerfilColetor", {coletorId: data.id})
-
+  function handleNavigation() {
+    navigation.navigate("PerfilColetor", { coletorId: data.id });
   }
 
   return (
-    <Pressable style={styles.card} onPress={HandleNavigation}>
+    <Pressable style={styles.card} onPress={handleNavigation}>
+      <View style={styles.circleContainer}>
+        <Image
+          source={require("../assets/img/Juan.jpg")}
+          style={styles.profileImage}
+        />
+      </View>
       <View style={styles.infoContainer}>
         <Text style={styles.nomeText}>{data.name}</Text>
         <Text style={styles.enderecoText}>{data.telefone}</Text>
@@ -27,7 +28,7 @@ const CardColetor = ({data}) => {
 const styles = StyleSheet.create({
   card: {
     borderRadius: 50,
-    backgroundColor: "#0FA958",
+    backgroundColor: "transparent", 
     width: 350,
     height: 109,
     flexDirection: "row",
@@ -36,23 +37,22 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 15,
     marginTop: 30,
+    position: "relative",
+    borderColor: "#0FA958", 
+    borderWidth: 1, 
   },
-  profileImageWrapper: {
-    width: 109,
-    height: 109,
-    borderRadius: 50,
-    backgroundColor: "gray",
-    alignItems: "center",
-    justifyContent: "center",
+  circleContainer: {
     position: "absolute",
-    left: 0,
-    top: 0,
-    bottom: 0,
+    left: "0%",
+    top: "9%",
+    transform: [{ translateY: -12 }],
+    justifyContent: "center",
+    alignItems: "center",
   },
   profileImage: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
+    width: 100,
+    height: 110,
+    borderRadius: 10000,
   },
   infoContainer: {
     flex: 1,
@@ -60,12 +60,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   nomeText: {
-    fontSize: 16,
-    color: "#000000", // Cor preta
+    top: "-0%",
+    left: "8%",
+    fontSize: 18,
+    marginLeft:"12%",
+    color: "#808080", 
   },
   enderecoText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "white",
+    top: "-0%",
+    left: "10%",
+    color: "black"
   },
 });
 
