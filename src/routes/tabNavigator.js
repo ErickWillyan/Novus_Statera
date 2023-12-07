@@ -19,7 +19,6 @@ export default function Routes() {
   const {user} = useContext (AuthContext);
   const type = user.type;
 
-
   if(type==="doador"){
 
   return (
@@ -53,7 +52,7 @@ export default function Routes() {
       />
       <Tab.Screen
         name="Historico_Coleta"
-        component={ScreenNotifi}
+        component={ScreenHistorico}
         options={{
           tabBarIcon: ({ color, size, focused }) => {
             size = 30;

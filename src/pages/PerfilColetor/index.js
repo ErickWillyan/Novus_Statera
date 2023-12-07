@@ -144,9 +144,9 @@ export default function ScreenPerfilColetor() {
   };
 
   const handleOnPress = () => {
-    RegisterColeta().then(() => {
-      console.log("Coleta cadastrada");
-    });
+    RegisterColeta().then(console.log("Coleta cadastrada"));
+
+    closeModal();
   };
 
   const handleOnPressReturnButton = () => {
@@ -213,11 +213,11 @@ export default function ScreenPerfilColetor() {
           </View>
         </Modal>
         {/* Tela perfil */}
-       
-          <Image
-            source={require("../../assets/img/Juan.jpg")}
-            style={styles.profileImage}
-          />
+
+        <Image
+          source={require("../../assets/img/Juan.jpg")}
+          style={styles.profileImage}
+        />
         <View style={styles.buttonContainer}>
           <TouchableOpacity>
             <ReturnButton onPress={handleOnPressReturnButton} />
@@ -241,9 +241,6 @@ export default function ScreenPerfilColetor() {
 }
 
 const styles = StyleSheet.create({
-
-  
-
   scrollViewContainer: {
     flexGrow: 1,
   },
@@ -258,7 +255,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     position: "absolute",
     top: 0,
-    resizeMode: "stretch"
+    resizeMode: "stretch",
   },
   buttonContainer: {
     flexDirection: "row",
