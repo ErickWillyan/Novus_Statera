@@ -1,13 +1,37 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ReturnButton from "../../../components/ReturnButton";
 import LinkText from "../../../components/LinkText";
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
 import { useRegisterUser } from "../context/register";
+import {launchImageLibrary} from 'react-native-image-picker'
 
 export default function ScreenCadastroPrim() {
+
+function openAlbum(){
+  const options = {
+    mediaType: "photo",
+    quality: 1,
+    selectionLimit: 1,
+  }
+
+  launchImageLibrary(options, (response) => {
+
+    if(response.didCancel){
+      console.log("IMAGE PICKER CANCELADO")
+      return;
+    }else if(response.error){
+      console.log("GEROU ERRO ", response.errorMessage)
+      return;
+    }
+
+    console.log(response.assets)
+
+  })
+}
+
   const { handleNextStep } = useRegisterUser();
   const [name, setName] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -16,13 +40,9 @@ export default function ScreenCadastroPrim() {
   const navigation = useNavigation();
 
   const handleNavigation = () => {
-    // Navegue para a tela alvo quando o link for clicado
     navigation.navigate("Login");
   };
 
-  //if(!user){
-  //return <ScreenLogin/>
-  //}
   return (
     <View style={[styles.container, { backgroundColor: "#FFFFFF" }]}>
       <View style={styles.return}>
@@ -33,7 +53,12 @@ export default function ScreenCadastroPrim() {
           style={styles.perfil}
           source={require("../../../assets/img/Perfil.png")}
         />
-        <LinkText placeholder={"Adicionar Foto"} />
+        {/* <LinkText 
+        onPress={openAlbum}
+        placeholder={"Adicionar Foto"} /> */}
+        <TouchableOpacity onPress={openAlbum}>
+          <Text>Adicionar Foto</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.inputs}>
         <CustomTextInput
